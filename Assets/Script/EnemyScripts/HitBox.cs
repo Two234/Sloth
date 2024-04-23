@@ -24,7 +24,7 @@ public class HitBox : MonoBehaviour
         }
     }
     void OnTriggerEnter2D(Collider2D col){
-        if (col.gameObject.tag == "Player" && healthPosition > 0f){
+        if (col.gameObject.tag == "Attack" && healthPosition > 0f){
             StartCoroutine(reductionTransition()); 
         }
     }
