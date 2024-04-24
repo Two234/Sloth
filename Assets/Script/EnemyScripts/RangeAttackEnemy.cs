@@ -7,7 +7,7 @@ public class RangeAttackEnemy : MonoBehaviour
     public Transform player;
     public GameObject bullet;
     private float shotCoolDown;
-    private  float startShotCoolDown;
+    public  float startShotCoolDown;
 
     // Start is called before the first frame update
     void Start()
