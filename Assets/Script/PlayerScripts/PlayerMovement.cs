@@ -46,11 +46,13 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             dir += Vector3.left;
+            GetComponent<SpriteRenderer>().flipX = false;
             
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             dir += Vector3.right;
+            GetComponent<SpriteRenderer>().flipX = true;
             
         }
 
