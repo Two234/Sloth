@@ -21,12 +21,13 @@ public class RangeAttackEnemy : MonoBehaviour
     void Update()
     {
         //direction that the enemy will look at 
-        Vector2 direction= new(player.position.x - transform.position.x ,player.position.y-transform.position.y);
-        transform.up = direction; 
+        Vector2 direction= new (player.position.x - transform.position.x ,player.position.y-transform.position.y);
 
         if (shotCoolDown <= 0) //checks after a certain amount of time that a instance of a bullet is created where teh enemy is 
         {
-            Instantiate(bullet, transform.position, transform.rotation);
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            newBullet.transform.rotation = Quaternion.Euler(0, 0, angle- 90);
             shotCoolDown = startShotCoolDown;
 
 
