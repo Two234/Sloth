@@ -30,34 +30,42 @@ public class PlayerMovement : MonoBehaviour
         dir = Vector3.zero;
         float AnimMoveX = input.x;
         float AnimMoveY = input.y;
+        input.x = Input.GetAxisRaw("Horizontal");
+        input.y = Input.GetAxisRaw("Vertical");
 
 
         // Input detection
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             dir += Vector3.up;
+            Input.GetAxisRaw("Vertical");
 
         }
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+           
         {
             dir += Vector3.down;
-            
+            Input.GetAxisRaw("Vertical");
+
+
         }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             dir += Vector3.left;
-            GetComponent<SpriteRenderer>().flipX = false;
-            
+            Input.GetAxisRaw("Horizontal");
+
+
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             dir += Vector3.right;
-            GetComponent<SpriteRenderer>().flipX = true;
-            
+            Input.GetAxisRaw("Horizontal");
+
+
         }
 
         Move();
-
+        Animate();
     }
 
    
@@ -65,6 +73,9 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetFloat("AnimMoveX", input.x);
         animator.SetFloat("AnimMoveY", input.y);
+        animator.SetFloat("WalkX", input.x);
+        animator.SetFloat("WalkY", input.y);
+        animator.SetFloat("MoveMagnitude", rb.velocity.magnitude);
 
     }
 }
