@@ -38,8 +38,7 @@ public class PlayerMovement : MonoBehaviour
         direction = mousePosition - transform.position;
 
         dir = Vector3.zero;
-        float AnimMoveX = input.x;
-        float AnimMoveY = input.y;
+
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
 

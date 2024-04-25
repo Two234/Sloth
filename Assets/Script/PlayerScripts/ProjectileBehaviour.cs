@@ -15,6 +15,7 @@ public class ProjectileBehavior : ProjectileAttackBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += direction * pa.speed * Time.deltaTime;
+        if (pa != null)
+            transform.position += direction * pa.speed * Time.deltaTime;
     }
 }

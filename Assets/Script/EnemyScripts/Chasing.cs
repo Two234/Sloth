@@ -54,6 +54,6 @@ public class Chasing : MonoBehaviour
         while (speedingLevel < goal){
             speedingLevel += acceleration;
             yield return new WaitForSeconds(Time.deltaTime);
-        }        
+        }
     }
 }
