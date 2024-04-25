@@ -446,8 +446,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 847919551762116667, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
-      propertyPath: isDead
+    - target: {fileID: 469158724129472220, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
+      propertyPath: m_Color.a
+      value: 0.21176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 469158724129472220, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 469158724129472220, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 469158724129472220, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1265777958904136313, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
@@ -495,12 +507,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8766102747320931414}
     - target: {fileID: 2217683516552114147, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
-      propertyPath: CheckIfRanged
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2217683516552114147, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
-      propertyPath: speedingMaxLevel
-      value: 5
+      propertyPath: CheckIfRanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3328079163507418159, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
       propertyPath: m_Name
