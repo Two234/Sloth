@@ -12,9 +12,11 @@ public class Portal : MonoBehaviour
 
 
 
-     private bool playerInsideTrigger = false;
-    private float timer = 0f;
-    private float timeToStay = 0.75f; // Adjust this value to set the duration the player should stay
+    private bool playerInsideTrigger = false;
+    [SerializeField]
+    private float timer = 10f;
+    [SerializeField]
+    private float timeToStay = 20f; // Adjust this value to set the duration the player should stay
 
     // Start is called before the first frame update
     void Start()
