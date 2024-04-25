@@ -208,8 +208,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.1515, y: 3.6585, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -429,6 +429,10 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 8766102747320931418}
+    - target: {fileID: 3744946461481388776, guid: 7a0ad8e65c2f0712381fbad127ecc047, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 519420028}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -490,6 +494,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 8766102747320931414}
+    - target: {fileID: 2217683516552114147, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
+      propertyPath: CheckIfRanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2217683516552114147, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
+      propertyPath: speedingMaxLevel
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3328079163507418159, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
       propertyPath: m_Name
       value: Enemy

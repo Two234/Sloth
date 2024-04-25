@@ -22,8 +22,8 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            Destroy(this.gameObject);
             Destroy(collision.gameObject);
-            Destroy(this);
         }
         else if (collision.gameObject.tag == "Obstacles") Destroy(this);
         
