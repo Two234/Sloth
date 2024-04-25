@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public GameObject camera;
     private Vector3 dir = Vector3.zero;
+    private Vector3 mousePosition;
+    
     private Vector3 input;
 
     void Start()
@@ -27,6 +30,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        Vector2 direction = mousePosition - transform.position;
+
         dir = Vector3.zero;
         float AnimMoveX = input.x;
         float AnimMoveY = input.y;
@@ -64,17 +71,17 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Move();
-        Animate();
+        Animate(direction);
         camera.transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
     }
 
    
-    void Animate()
+    void Animate(Vector2 direction)
     {
-        animator.SetFloat("AnimMoveX", input.x);
-        animator.SetFloat("AnimMoveY", input.y);
-        animator.SetFloat("WalkX", input.x);
-        animator.SetFloat("WalkY", input.y);
+        animator.SetFloat("AnimMoveX", direction.x);
+        animator.SetFloat("AnimMoveY", direction.y);
+        animator.SetFloat("WalkX", direction.x);
+        animator.SetFloat("WalkY", direction.y);
         animator.SetFloat("MoveMagnitude", rb.velocity.magnitude);
 
     }
