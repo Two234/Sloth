@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &493161819 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4014690732934039914, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
+  m_PrefabInstance: {fileID: 4612406642830524037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +378,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1911762742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3328079163507418159, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
+  m_PrefabInstance: {fileID: 4612406642830524037}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1911762750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911762742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97975f00b16f33244b535cd771e8bf28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 8766102747320931414}
+  speed: 0
+  enemyEye: {fileID: 493161819}
+  viewBlock: 1
+  speedingLevelIncreases: 1.2
+  acceleration: 0.005
+  speedingLevels: 5
+  raycastDistance: 2
 --- !u!1001 &4226882247063562640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -446,8 +476,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 847919551762116667, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
-      propertyPath: isDead
+    - target: {fileID: 469158724129472220, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
+      propertyPath: m_Color.a
+      value: 0.21176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 469158724129472220, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 469158724129472220, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 469158724129472220, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1265777958904136313, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
@@ -495,12 +537,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8766102747320931414}
     - target: {fileID: 2217683516552114147, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
-      propertyPath: CheckIfRanged
-      value: 1
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2217683516552114147, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
-      propertyPath: speedingMaxLevel
-      value: 5
+      propertyPath: CheckIfRanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3328079163507418159, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
       propertyPath: m_Name
@@ -517,7 +559,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3328079163507418159, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1911762750}
   m_SourcePrefab: {fileID: 100100000, guid: 700950cf5044e6c8694619fcd010d04f, type: 3}
 --- !u!4 &8766102747320931414 stripped
 Transform:
