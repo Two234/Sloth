@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public float damage;
     public Animator animator;
-
+    public GameObject camera;
     private Vector3 dir = Vector3.zero;
     private Vector3 input;
 
@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
         float AnimMoveY = input.y;
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
-
 
         // Input detection
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
@@ -66,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
         Move();
         Animate();
+        camera.transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
     }
 
    
