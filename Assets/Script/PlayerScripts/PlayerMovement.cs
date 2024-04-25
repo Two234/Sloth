@@ -16,9 +16,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 mousePosition;
     public Vector2 direction;
     private Vector3 input;
-    void Awake(){
+    void Awake()
+    {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        direction = mousePosition - transform.position;
+        direction = mousePosition + transform.position;
     }
     void Start()
     {
@@ -78,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
    
-    void Animate(Vector2 direction)
+    void Animate(Vector3 direction)
     {
         animator.SetFloat("AnimMoveX", direction.x);
         animator.SetFloat("AnimMoveY", direction.y);

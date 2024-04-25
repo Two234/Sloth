@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ProjectileAttack : WeaponController
@@ -17,6 +18,10 @@ public class ProjectileAttack : WeaponController
         base.Attack();
         GameObject playerProjectile = Instantiate(prefab);
         playerProjectile.transform.position = transform.position;
-        playerProjectile.GetComponent<ProjectileAttackBehaviour>().DirectionChecker(pm.rb.velocity);
+        playerProjectile.GetComponent<ProjectileAttackBehaviour>().DirectionChecker(pm.direction); 
     }
+
+   
 }
+
+
