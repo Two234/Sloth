@@ -14,9 +14,12 @@ public class PlayerMovement : MonoBehaviour
     public GameObject camera;
     private Vector3 dir = Vector3.zero;
     private Vector3 mousePosition;
-    
+    public Vector2 direction;
     private Vector3 input;
-
+    void Awake(){
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        direction = mousePosition - transform.position;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector2 direction = mousePosition - transform.position;
+        direction = mousePosition - transform.position;
 
         dir = Vector3.zero;
         float AnimMoveX = input.x;
