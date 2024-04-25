@@ -12,6 +12,7 @@ public class VisualizationSystem : MonoBehaviour
     void Update()    
     {
         if (player != null)
+            Debug.Log(player);
             GetComponent<PolygonCollider2D>().points = new Vector2[]{
                 GetComponent<PolygonCollider2D>().points[0],
                 GetComponent<PolygonCollider2D>().points[1],

@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
+using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
 public class Chasing : MonoBehaviour
@@ -48,12 +49,20 @@ public class Chasing : MonoBehaviour
                 targetLock = viewBlock == false && EDF <= ray/2;
             }
         }
+        Animate();
     }
     IEnumerator speedTransition(){
+        Debug.Log("working");
         float goal = speedingLevel * Acceleration;
         while (speedingLevel < goal){
             speedingLevel += acceleration;
             yield return new WaitForSeconds(Time.deltaTime);
         }
+    }
+    void Animate(){
+        GetComponent<Animator>().SetFloat("AnimMoveX", GetComponent<Rigidbody2D>().velocity.x);
+        GetComponent<Animator>().SetFloat("AnimMoveY", GetComponent<Rigidbody2D>().velocity.y);
+        GetComponent<Animator>().SetFloat("WalkX", GetComponent<Rigidbody2D>().velocity.x);
+        GetComponent<Animator>().SetFloat("WalkY", GetComponent<Rigidbody2D>().velocity.y);
     }
 }
