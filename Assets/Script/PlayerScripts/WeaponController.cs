@@ -20,6 +20,7 @@ public class WeaponController : MonoBehaviour
     {
         currentCooldown = cooldownDuration; //At start, set the current cooldown to be the cooldown duration
         pm = FindAnyObjectByType<PlayerMovement>();
+        
     }
 
     protected virtual void Update()

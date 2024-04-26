@@ -10,7 +10,7 @@ public class ProjectileAttackBehaviour : MonoBehaviour
 
     protected Vector3 direction;
     public float destroyAfterSeconds;
-    // Start is called before the first frame update
+   
     protected virtual void Start()
     {
        Destroy(gameObject, destroyAfterSeconds); 
