@@ -60,7 +60,7 @@ public class ChaseAiEnemy : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(enemyEye.position, Vector2.right, raycastDistance);
 
         // Check if the raycast hits an object with the tag "object"
-        if (hit.collider != null && hit.collider.CompareTag("Player"))
+        if (hit.collider != null && hit.collider.CompareTag("object"))
         {
             // Move around the object
             Vector2 direction = (hit.point - (Vector2)transform.position).normalized;
