@@ -15,7 +15,7 @@ public class Chasing : MonoBehaviour
     public bool viewBlock = false, targetLock = false, CheckIfRanged = false;
     float EnemyAttackDistance;
     private float ray, speedingLevel, EDF;
-    public float Acceleration = 1.2f;
+    public float speeding = 1.2f;
     public float acceleration;
     public int speedingLevels;
     public int speedingMaxLevel;
@@ -49,11 +49,12 @@ public class Chasing : MonoBehaviour
                 targetLock = viewBlock == false && EDF <= ray/2;
             }
         }
-        Animate();
+        if (GetComponent<Animator>() != null)
+            Animate();
     }
     IEnumerator speedTransition(){
         Debug.Log("working");
-        float goal = speedingLevel * Acceleration;
+        float goal = speedingLevel * speeding;
         while (speedingLevel < goal){
             speedingLevel += acceleration;
             yield return new WaitForSeconds(Time.deltaTime);
