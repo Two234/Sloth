@@ -135,17 +135,21 @@ PrefabInstance:
       propertyPath: arc
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 704188558982783418, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
+      propertyPath: angle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 750788544288317504, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3503888727326289469, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.42
+      value: 6.44
       objectReference: {fileID: 0}
     - target: {fileID: 3503888727326289469, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.48
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 3503888727326289469, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -181,6 +185,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3995790448614504896, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864999919200309771, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864999919200309771, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864999919200309771, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5004109967554202713, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
@@ -317,7 +333,7 @@ GameObject:
   - component: {fileID: 1118596637}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
