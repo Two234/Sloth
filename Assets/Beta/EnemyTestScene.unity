@@ -139,10 +139,14 @@ PrefabInstance:
       propertyPath: angle
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 704188558982783418, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 750788544288317504, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1299884051}
     - target: {fileID: 3503888727326289469, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.44
@@ -185,7 +189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3995790448614504896, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4864999919200309771, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -205,7 +209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6903584078429339049, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
       propertyPath: m_Constraints
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7629500560473946385, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
       propertyPath: m_Name
@@ -226,6 +230,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1761094603609076978, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1882259139}
+    - targetCorrespondingSourceObject: {fileID: 1761094603609076978, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1882259144}
   m_SourcePrefab: {fileID: 100100000, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
 --- !u!1 &519420028
 GameObject:
@@ -331,7 +338,7 @@ GameObject:
   - component: {fileID: 1118596639}
   - component: {fileID: 1118596638}
   - component: {fileID: 1118596637}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -471,7 +478,7 @@ Transform:
   m_GameObject: {fileID: 1118596636}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.21316126, w: 0.97701705}
-  m_LocalPosition: {x: -1.01, y: -0.51, z: 0}
+  m_LocalPosition: {x: 1.6, y: -10.8, z: 0}
   m_LocalScale: {x: 6.4563, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -555,7 +562,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882259134}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -594,6 +601,21 @@ PolygonCollider2D:
     m_Paths:
     - []
   m_UseDelaunayMesh: 0
+--- !u!114 &1882259144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882259134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee8daf96a8c8826359b2683587f8bc68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

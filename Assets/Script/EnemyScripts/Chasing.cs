@@ -53,7 +53,6 @@ public class Chasing : MonoBehaviour
             Animate();
     }
     IEnumerator speedTransition(){
-        Debug.Log("working");
         float goal = speedingLevel * speeding;
         while (speedingLevel < goal){
             speedingLevel += acceleration;
