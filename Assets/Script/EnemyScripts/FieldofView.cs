@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Security.Permissions;
 using System.Xml.Schema;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -8,23 +7,21 @@ using UnityEngine.AI;
 using UnityEngine.Animations;
 using UnityEngine.Experimental.Rendering;
 
-public class VisualizationField : MonoBehaviour
+public class FieldofView : MonoBehaviour
 {
     public int ray = 50;
     public float FieldOfView = 90f, distance = 10f;
     float arc ;
     public float rotationSpeed;
-    [SerializeField] public int obstaclesLayer = 6; 
+    public int obstaclesLayer = 6; 
     bool isMoving = false;
-    [SerializeField] public Material material;
     public Color color;
     void Start(){
         arc = FieldOfView / ray; 
         obstaclesLayer = 1 << obstaclesLayer;
-        GetComponent<MeshRenderer>().materials = new Material[1]{material}; 
     }
     void LateUpdate(){
-        float angle = 0;
+        float angle = FieldOfView;
 
         Mesh mesh = new Mesh();
 

@@ -132,17 +132,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 704188558982783418, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
-      propertyPath: arc
-      value: 0.01
+      propertyPath: ray
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 704188558982783418, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
-      propertyPath: angle
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 704188558982783418, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
     - target: {fileID: 750788544288317504, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
       propertyPath: player
       value: 
@@ -187,30 +183,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3995790448614504896, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4864999919200309771, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4864999919200309771, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4864999919200309771, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5004109967554202713, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6903584078429339049, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 7629500560473946385, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -219,9 +191,9 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1299884051}
-    - target: {fileID: 8122975396193845747, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
-      propertyPath: speedingMaxLevel
-      value: 5
+    - target: {fileID: 8452355466233017756, guid: 1c589eb0f87c121ec9eb390a0db9ba9a, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
