@@ -27,7 +27,7 @@ public class VisualizationField : MonoBehaviour
 
         int[] triangles = new int[(ray - 1) * 3];
 
-        Vector3[] vertices = new Vector3[ray + 2];
+        Vector3[] vertices = new Vector3[ray + 1];
         vertices[0] = Vector3.zero;
         
         angle -= arc;
