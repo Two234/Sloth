@@ -340,7 +340,7 @@ MonoBehaviour:
   enemyEye: {fileID: 4014690732934039914}
   viewBlock: 0
   targetLock: 0
-  CheckIfRanged: 0
+  CheckIfRanged: 1
   speeding: 1.2
   acceleration: 0.005
   speedingLevels: 10
@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 8646333967898978364}
   - component: {fileID: 2794336054293651297}
   - component: {fileID: 274636471337103079}
+  - component: {fileID: 2906639474356095141}
   m_Layer: 0
   m_Name: Sight
   m_TagString: Untagged
@@ -463,6 +464,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2906639474356095141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3536683208536740750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644a5640e20ebc287a1d58ed6ff7098b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ray: 100
+  FieldOfView: 90
+  distance: 10
+  rotationSpeed: 0.5
+  material: {fileID: 2100000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+  PlayerDetected: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  obstaclesLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  player: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0.22352941}
 --- !u!1 &4821431806860593649
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +688,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.21176471}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
