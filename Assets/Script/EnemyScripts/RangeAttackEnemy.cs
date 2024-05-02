@@ -8,7 +8,6 @@ public class RangeAttackEnemy : MonoBehaviour
     public GameObject bullet;
     private float shotCoolDown;
     public  float startShotCoolDown;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +23,7 @@ public class RangeAttackEnemy : MonoBehaviour
         if (player != null){
             Vector2 direction= new (player.position.x - transform.position.x ,player.position.y-transform.position.y);
 
-            if (shotCoolDown <= 0 && GetComponent<Chasing>().targetLock == true) //checks after a certain amount of time that a instance of a bullet is created where teh enemy is 
+            if (shotCoolDown <= 0 && GetComponent<Chasing>().EnemySight.GetComponent<FieldofView>().PlayerDetected == true) //checks after a certain amount of time that a instance of a bullet is created where teh enemy is 
             {
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity);

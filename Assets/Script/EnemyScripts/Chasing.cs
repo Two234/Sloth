@@ -1,11 +1,12 @@
 using System.Collections;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Chasing : MonoBehaviour
 {
     public float speed ;
-    public Transform player, enemyEye;
-    public bool viewBlock = false, targetLock = false, CheckIfRanged = false;
+    public Transform player;
+    public bool CheckIfRanged = false;
     float EnemyAttackDistance, sightDistance;
     private float speedingLevel;
     public float speeding = 1.2f;
@@ -13,7 +14,7 @@ public class Chasing : MonoBehaviour
     public int speedingLevels;
     public int speedingMaxLevel;
     float EDF;
-    Transform EnemySight;
+    [HideInInspector] public Transform EnemySight;
     void Awake(){
         foreach(Transform trans in transform)
             if (trans.name == "Sight")
@@ -21,25 +22,28 @@ public class Chasing : MonoBehaviour
         sightDistance = EnemySight.GetComponent<FieldofView>().distance;
         EnemyAttackDistance = sightDistance / 4;
         speedingLevel = sightDistance / speedingLevels;
+
     }
 
     // Update is called once per frame
     void FixedUpdate(){
-        EDF = Mathf.Sqrt(Mathf.Pow(player.position.x - transform.position.x,2) + Mathf.Pow( player.position.y - transform.position.y,2)); 
+        Vector2 sightDirection = new Vector2(Mathf.Cos((EnemySight.eulerAngles.z - EnemySight.GetComponent<FieldofView>().FieldOfView / 2 % 360) * Mathf.Deg2Rad), Mathf.Sin(EnemySight.eulerAngles.z * Mathf.Deg2Rad));
+        if (player != null ){
+            EDF = Mathf.Sqrt(Mathf.Pow(player.position.x - transform.position.x,2) + Mathf.Pow( player.position.y - transform.position.y,2)); 
 
-        bool playerDetected = EnemySight.GetComponent<FieldofView>().PlayerDetected;
-        float sightDistance = EnemySight.GetComponent<FieldofView>().distance;
+            bool playerDetected = EnemySight.GetComponent<FieldofView>().PlayerDetected;
+            float sightDistance = EnemySight.GetComponent<FieldofView>().distance;
 
-        if(playerDetected == true){
-            if (EDF <= sightDistance - speedingLevel && speedingLevel <= sightDistance/speedingLevels * speedingMaxLevel)
-                StartCoroutine(speedTransition());
-            else speedingLevel /= 2;
-            GetComponent<Rigidbody2D>().velocity = (player.position - transform.position) * speed * speedingLevel * Time.deltaTime;
+            if(playerDetected == true){
+                if (EDF <= sightDistance - speedingLevel && speedingLevel <= sightDistance/speedingLevels * speedingMaxLevel)
+                    StartCoroutine(speedTransition());
+                else speedingLevel /= 2;
+                GetComponent<Rigidbody2D>().velocity = (player.position - transform.position) * speed * speedingLevel * Time.deltaTime;
+            }
+            else GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
-        else GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        
         if (GetComponent<Animator>() != null)
-            Animate();
+            Animate(sightDirection);
     }
     IEnumerator speedTransition(){
         float goal = speedingLevel * speeding;
@@ -48,11 +52,11 @@ public class Chasing : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }
-    void Animate(){
-        GetComponent<Animator>().SetFloat("AnimMoveX", GetComponent<Rigidbody2D>().velocity.x);
-        GetComponent<Animator>().SetFloat("AnimMoveY", GetComponent<Rigidbody2D>().velocity.y);
-        GetComponent<Animator>().SetFloat("WalkX", GetComponent<Rigidbody2D>().velocity.x);
-        GetComponent<Animator>().SetFloat("WalkY", GetComponent<Rigidbody2D>().velocity.y);
+    void Animate(Vector2 direction){
+        GetComponent<Animator>().SetFloat("AnimMoveX", direction.x);
+        GetComponent<Animator>().SetFloat("AnimMoveY", direction.y);
+        GetComponent<Animator>().SetFloat("WalkX", direction.x);
+        GetComponent<Animator>().SetFloat("WalkY", direction.y);
         GetComponent<Animator>().SetFloat("MoveMagnitude", GetComponent<Rigidbody2D>().velocity.magnitude);
     }
 }

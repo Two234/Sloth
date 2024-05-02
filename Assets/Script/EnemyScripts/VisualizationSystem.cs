@@ -21,11 +21,11 @@ public class VisualizationSystem : MonoBehaviour
         }
     }
     void OnTriggerEnter2D(Collider2D col){
-        if (col.gameObject.tag == "Obstacles")
-            script.viewBlock = true;            
+        // if (col.gameObject.tag == "Obstacles")
+            // script.viewBlock = true;            
     }
     void OnTriggerExit2D(Collider2D col){
-        if (col.gameObject.tag == "Obstacles")
-            script.viewBlock = false;
+        // if (col.gameObject.tag == "Obstacles")
+            // script.viewBlock = false;
     }
 }
