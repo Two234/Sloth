@@ -13,10 +13,11 @@ public class FieldofView : MonoBehaviour
     public int ray = 50;
     public float FieldOfView = 90f, distance = 10f;
     float arc ;
-    public float rotationSpeed; 
+    public float rotationSpeed = 0.5f; 
     bool isMoving = false;
-    [SerializeField] private Material material;
     public bool PlayerDetected = false;
+    bool PlayerWasDetected = false;
+    [SerializeField] private Material material;
     [SerializeField] private LayerMask playerLayer, obstaclesLayer;
     public Transform player;
     public Color color;
@@ -39,18 +40,23 @@ public class FieldofView : MonoBehaviour
 
         angle -= arc;
         int trianglesIndex = 0;
+        PlayerDetected = false;
         for (int i = 1 ; i <= ray ; i ++){
             // field of view is considered multiple small triangle to make the arc
             vertices[i] = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad) * distance, Mathf.Sin(angle * Mathf.Deg2Rad) * distance, 0);
 
             Vector3 direction = new Vector3(Mathf.Cos((transform.eulerAngles.z + angle) * Mathf.Deg2Rad), Mathf.Sin((transform.eulerAngles.z + angle) * Mathf.Deg2Rad),0);
             // the fov detects collided object that only has the same obstacles layer 
-            RaycastHit2D obsRaycast = Physics2D.Raycast(transform.position, direction, distance, obstaclesLayer);
-            RaycastHit2D plRaycast = Physics2D.Raycast(transform.position, direction, distance, playerLayer);
-            if (plRaycast) PlayerDetected = true;
-            if (obsRaycast){
-                vertices[i] = new Vector3(obsRaycast.point.x - transform.position.x, obsRaycast.point.y - transform.position.y);
-                vertices[i] = Quaternion.Euler(0, 0, -transform.eulerAngles.z) * vertices[i];
+            RaycastHit2D raycast = Physics2D.Raycast(transform.position, direction, distance, LayerMask.GetMask(new string[]{"Player", "Obstacles"}));
+            if (raycast){
+                if (raycast.transform.tag == "Player"){
+                    PlayerDetected = true;
+                    PlayerWasDetected = true;
+                } 
+                if (raycast.transform.tag == "Obstacles"){
+                    vertices[i] = new Vector3(raycast.point.x - transform.position.x, raycast.point.y - transform.position.y);
+                    vertices[i] = Quaternion.Euler(0, 0, -transform.eulerAngles.z) * vertices[i];
+                }
             }
             if (i > 1){
                 triangles[trianglesIndex] = 0;
@@ -76,13 +82,18 @@ public class FieldofView : MonoBehaviour
         if (isMoving == false && PlayerDetected == false){
             StartCoroutine(LookAround());
         }
-        else{
-            transform.eulerAngles = new Vector3(0 , 0 , FieldOfView / 2 + Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
+        else if(PlayerDetected == true){
+            transform.eulerAngles = new Vector3(0 , 0 , Mathf.Ceil(FieldOfView / 2 + Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg));
         }
     }
     public IEnumerator LookAround(){
+        if (PlayerWasDetected == true){
+            PlayerWasDetected = false;
+            yield return new WaitForSeconds(3f);
+        }
+
         isMoving = true;
-        int i = UnityEngine.Random.Range(-180, 0);
+        int i = UnityEngine.Random.Range(-180, 180);
         while (Math.Round(transform.rotation.eulerAngles.z) % 180 != Math.Abs(i)){
             transform.Rotate(Vector3.forward*i, rotationSpeed);
             yield return new WaitForSeconds(Time.deltaTime);
