@@ -1,12 +1,5 @@
-using System;
 using System.Collections;
-using System.Security.Cryptography;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering;
-using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
 
 public class Chasing : MonoBehaviour
 {

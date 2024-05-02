@@ -1,24 +1,16 @@
 using System;
 using System.Collections;
-using System.Security.Permissions;
-using System.Xml.Schema;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Animations;
-using UnityEngine.Experimental.Rendering;
-
 public class FieldofView : MonoBehaviour
 {
     public int ray = 50;
     public float FieldOfView = 90f, distance = 10f;
     float arc ;
     public float rotationSpeed = 0.5f; 
-    bool isMoving = false;
+    public bool isMoving = false;
     public bool PlayerDetected = false;
-    bool PlayerWasDetected = false;
+    public bool PlayerWasDetected = false;
     [SerializeField] private Material material;
-    [SerializeField] private LayerMask playerLayer, obstaclesLayer;
     public Transform player;
     public Color color;
     void Start(){
@@ -87,18 +79,20 @@ public class FieldofView : MonoBehaviour
         }
     }
     public IEnumerator LookAround(){
+        isMoving = true;
         if (PlayerWasDetected == true){
             PlayerWasDetected = false;
+            transform.Rotate(Vector3.zero + transform.eulerAngles, 0f);
             yield return new WaitForSeconds(3f);
         }
-
-        isMoving = true;
-        int i = UnityEngine.Random.Range(-180, 180);
-        while (Math.Round(transform.rotation.eulerAngles.z) % 180 != Math.Abs(i)){
-            transform.Rotate(Vector3.forward*i, rotationSpeed);
-            yield return new WaitForSeconds(Time.deltaTime);
+        else{
+            int i = UnityEngine.Random.Range(-180, 180);
+            while (Mathf.Round(transform.rotation.eulerAngles.z) % 180 != Math.Abs(i)){
+                transform.Rotate(Vector3.forward*i, rotationSpeed);
+                yield return new WaitForSeconds(Time.deltaTime);
+            }
+            yield return new WaitForSeconds(3f);
         }
-        yield return new WaitForSeconds(3f);
         isMoving = false;
     }
 }
