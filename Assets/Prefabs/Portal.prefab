@@ -92,3 +92,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextLevel: Level 2
   boss: {fileID: 0}
+  timer: 10
+  timeToStay: 20

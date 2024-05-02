@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +11,16 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public float damage;
     public Animator animator;
-
+    public GameObject camera;
     private Vector3 dir = Vector3.zero;
+    private Vector3 mousePosition;
+    public Vector2 direction;
     private Vector3 input;
-
+    void Awake()
+    {
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        direction = mousePosition + transform.position;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,12 +34,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        direction = mousePosition - transform.position;
+
         dir = Vector3.zero;
-        float AnimMoveX = input.x;
-        float AnimMoveY = input.y;
+
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
-
 
         // Input detection
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
@@ -65,16 +74,17 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Move();
-        Animate();
+        Animate(direction);
+        camera.transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
     }
 
    
-    void Animate()
+    void Animate(Vector3 direction)
     {
-        animator.SetFloat("AnimMoveX", input.x);
-        animator.SetFloat("AnimMoveY", input.y);
-        animator.SetFloat("WalkX", input.x);
-        animator.SetFloat("WalkY", input.y);
+        animator.SetFloat("AnimMoveX", direction.x);
+        animator.SetFloat("AnimMoveY", direction.y);
+        animator.SetFloat("WalkX", direction.x);
+        animator.SetFloat("WalkY", direction.y);
         animator.SetFloat("MoveMagnitude", rb.velocity.magnitude);
 
     }
