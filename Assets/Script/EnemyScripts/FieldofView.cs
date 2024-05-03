@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 public class FieldofView : MonoBehaviour
 {
@@ -12,12 +13,13 @@ public class FieldofView : MonoBehaviour
     bool PlayerWasDetected = false;
     [SerializeField] private Material material;
     public Transform player;
+    [SerializeField] private LayerMask Player, Obstacles;
     public Color color;
     void Start(){
-        arc = FieldOfView / ray; 
         GetComponent<MeshRenderer>().materials = new Material[1]{material}; 
     }
     void LateUpdate(){
+        arc = FieldOfView / ray; 
         // Making the field of view
         float angle = 0;
         Mesh mesh = new Mesh();
@@ -30,26 +32,28 @@ public class FieldofView : MonoBehaviour
         Color[] colors = new Color[ray + 1];
         colors[0] = color;
 
+
         angle -= arc;
         int trianglesIndex = 0;
         PlayerDetected = false;
+        Vector2 prevertex = Vector2.zero;
         for (int i = 1 ; i <= ray ; i ++){
             // field of view is considered multiple small triangle to make the arc
             vertices[i] = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad) * distance, Mathf.Sin(angle * Mathf.Deg2Rad) * distance, 0);
 
             Vector3 direction = new Vector3(Mathf.Cos((transform.eulerAngles.z + angle) * Mathf.Deg2Rad), Mathf.Sin((transform.eulerAngles.z + angle) * Mathf.Deg2Rad),0);
             // the fov detects collided object that only has the same obstacles layer 
-            RaycastHit2D raycast = Physics2D.Raycast(transform.position, direction, distance, LayerMask.GetMask(new string[]{"Player", "Obstacles"}));
-            if (raycast){
-                if (raycast.transform.tag == "Player"){
+            RaycastHit2D obstacle = Physics2D.Raycast(transform.position, direction, distance, Obstacles);
+            
+            if (obstacle){
+                    vertices[i] = new Vector3(obstacle.point.x - transform.position.x, obstacle.point.y - transform.position.y);
+                    vertices[i] = Quaternion.Euler(0, 0, -transform.eulerAngles.z) * vertices[i];
+            }
+            RaycastHit2D player = Physics2D.Raycast(transform.position, direction, Mathf.Sqrt(Mathf.Pow(vertices[i].x, 2) + Mathf.Pow(vertices[i].y, 2)), Player);
+            if (player){
                     PlayerDetected = true;
                     PlayerWasDetected = true;
-                } 
-                if (raycast.transform.tag == "Obstacles"){
-                    vertices[i] = new Vector3(raycast.point.x - transform.position.x, raycast.point.y - transform.position.y);
-                    vertices[i] = Quaternion.Euler(0, 0, -transform.eulerAngles.z) * vertices[i];
-                }
-            }
+            } 
             if (i > 1){
                 triangles[trianglesIndex] = 0;
                 triangles[trianglesIndex + 1] = i - 1;
