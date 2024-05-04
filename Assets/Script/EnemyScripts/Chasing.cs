@@ -31,8 +31,8 @@ public class Chasing : MonoBehaviour
             EDF = Mathf.Sqrt(Mathf.Pow(player.position.x - transform.position.x,2) + Mathf.Pow( player.position.y - transform.position.y,2)); 
 
             bool playerDetected = EnemySight.GetComponent<FieldofView>().PlayerDetected;
-
-            if(playerDetected == true){
+            bool isAttacking = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Melee Attack");
+            if(playerDetected == true && isAttacking == false){
                 if (EDF >= speeding * speedingMaxLevel){
                     speedingLevel = speedingLevels / (EDF * speeding);
                 }
