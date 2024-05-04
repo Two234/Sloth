@@ -233,7 +233,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 1
-  Player: {fileID: 8766102747320931414}
 --- !u!1 &1262039665
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +487,10 @@ PrefabInstance:
     - target: {fileID: 4763261680086439089, guid: 3497eaf13ad5529aa98682f0dbddcb84, type: 3}
       propertyPath: layers.Array.data[1].m_Bits
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8070432143295815993, guid: 3497eaf13ad5529aa98682f0dbddcb84, type: 3}
+      propertyPath: speed
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 8070432143295815993, guid: 3497eaf13ad5529aa98682f0dbddcb84, type: 3}
       propertyPath: player
