@@ -99,4 +99,12 @@ public class FieldofView : MonoBehaviour
         }
         isMoving = false;
     }
+    public void Animate(){
+        Vector2 sightDirection = new Vector2(Mathf.Cos((transform.eulerAngles.z - FieldOfView / 2 % 360) * Mathf.Deg2Rad), Mathf.Sin(transform.eulerAngles.z * Mathf.Deg2Rad));
+
+        transform.parent.GetComponent<Animator>().SetFloat("AnimMoveX", sightDirection.x);
+        transform.parent.GetComponent<Animator>().SetFloat("AnimMoveY", sightDirection.y);
+        transform.parent.GetComponent<Animator>().SetFloat("WalkX", sightDirection.x);
+        transform.parent.GetComponent<Animator>().SetFloat("WalkY", sightDirection.y);
+    }
 }

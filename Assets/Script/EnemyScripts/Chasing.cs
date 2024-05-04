@@ -27,7 +27,6 @@ public class Chasing : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate(){
-        Vector2 sightDirection = new Vector2(Mathf.Cos((EnemySight.eulerAngles.z - EnemySight.GetComponent<FieldofView>().FieldOfView / 2 % 360) * Mathf.Deg2Rad), Mathf.Sin(EnemySight.eulerAngles.z * Mathf.Deg2Rad));
         if (player != null ){
             EDF = Mathf.Sqrt(Mathf.Pow(player.position.x - transform.position.x,2) + Mathf.Pow( player.position.y - transform.position.y,2)); 
 
@@ -43,7 +42,9 @@ public class Chasing : MonoBehaviour
             else GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
         if (GetComponent<Animator>() != null)
-            Animate(sightDirection);
+            EnemySight.GetComponent<FieldofView>().Animate();
+            GetComponent<Animator>().SetFloat("MoveMagnitude", GetComponent<Rigidbody2D>().velocity.magnitude);
+            
     }
     IEnumerator speedTransition(){
         float goal = speedingLevel * speeding;
@@ -52,11 +53,5 @@ public class Chasing : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }
-    void Animate(Vector2 direction){
-        GetComponent<Animator>().SetFloat("AnimMoveX", direction.x);
-        GetComponent<Animator>().SetFloat("AnimMoveY", direction.y);
-        GetComponent<Animator>().SetFloat("WalkX", direction.x);
-        GetComponent<Animator>().SetFloat("WalkY", direction.y);
-        GetComponent<Animator>().SetFloat("MoveMagnitude", GetComponent<Rigidbody2D>().velocity.magnitude);
-    }
+    
 }
