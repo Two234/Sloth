@@ -44,17 +44,10 @@ public class Chasing : MonoBehaviour
                 speedingLevel = 0;
             }
         }
-        if (GetComponent<Animator>() != null)
+        if (GetComponent<Animator>() != null){
             EnemySight.GetComponent<FieldofView>().Animate();
             GetComponent<Animator>().SetFloat("MoveMagnitude", GetComponent<Rigidbody2D>().velocity.magnitude);
+        }
             
     }
-    IEnumerator speedTransition(){
-        float goal = speedingLevel * speeding;
-        while (speedingLevel < goal){
-            speedingLevel += acceleration;
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-    }
-    
 }

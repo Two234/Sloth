@@ -26,8 +26,11 @@ public class meleeAttack : MonoBehaviour
         }
     }
     void OnCollisionEnter2D(Collision2D col){
-        if (col.transform.tag == "Player")
+        if (col.transform.tag == "Player"){
             attackRange = true;
+            EnemySight.GetComponent<FieldofView>().PlayerDetected = true;
+            EnemySight.GetComponent<FieldofView>().PlayerWasDetected = true;
+        }
     }
     void OnCollisionExit2D(Collision2D col){
         if (col.transform.tag == "Player")

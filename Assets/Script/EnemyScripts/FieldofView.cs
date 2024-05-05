@@ -9,8 +9,7 @@ public class FieldofView : MonoBehaviour
     float arc ;
     public float rotationSpeed = 0.5f; 
     bool isMoving = false;
-    [HideInInspector] public bool PlayerDetected = false;
-    bool PlayerWasDetected = false;
+    [HideInInspector] public bool PlayerDetected = false, PlayerWasDetected = false;
     [SerializeField] private Material material;
     public Transform player;
     [SerializeField] private LayerMask Player, Obstacles;
