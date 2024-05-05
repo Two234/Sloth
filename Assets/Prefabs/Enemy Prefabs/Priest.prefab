@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 1518411712313005363}
   - component: {fileID: 6890725461602314216}
   - component: {fileID: 8161748800541279324}
+  - component: {fileID: 6248489821497793994}
   m_Layer: 0
   m_Name: Priest
   m_TagString: Untagged
@@ -214,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48592e07e44efe01897dcd408b33ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 75
   player: {fileID: 0}
   CheckIfRanged: 1
   speeding: 1.2
@@ -308,6 +309,20 @@ PolygonCollider2D:
       - {x: 0.5, y: -0.5}
       - {x: 0.5, y: 0.5}
   m_UseDelaunayMesh: 0
+--- !u!114 &6248489821497793994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967191326678028465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba8bbc283acefb1cbbd5cc796ba145b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 1
+  delay: 1
 --- !u!1 &5472123075752274048
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,4 +510,10 @@ MonoBehaviour:
   PlayerDetected: 0
   material: {fileID: 2100000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
   player: {fileID: 0}
+  Player:
+    serializedVersion: 2
+    m_Bits: 8
+  Obstacles:
+    serializedVersion: 2
+    m_Bits: 64
   color: {r: 0, g: 0, b: 0, a: 0.22352941}

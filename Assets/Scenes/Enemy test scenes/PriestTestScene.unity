@@ -215,24 +215,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &590863850 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1967191326678028465, guid: 3497eaf13ad5529aa98682f0dbddcb84, type: 3}
-  m_PrefabInstance: {fileID: 8397062244827808792}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &590863858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 590863850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aba8bbc283acefb1cbbd5cc796ba145b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 1
 --- !u!1 &1262039665
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,14 +462,6 @@ PrefabInstance:
       propertyPath: Obstacles.m_Bits
       value: 64
       objectReference: {fileID: 0}
-    - target: {fileID: 4763261680086439089, guid: 3497eaf13ad5529aa98682f0dbddcb84, type: 3}
-      propertyPath: layers.Array.data[0].m_Bits
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4763261680086439089, guid: 3497eaf13ad5529aa98682f0dbddcb84, type: 3}
-      propertyPath: layers.Array.data[1].m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     - target: {fileID: 8070432143295815993, guid: 3497eaf13ad5529aa98682f0dbddcb84, type: 3}
       propertyPath: speed
       value: 75
@@ -539,10 +513,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1967191326678028465, guid: 3497eaf13ad5529aa98682f0dbddcb84, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 590863858}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3497eaf13ad5529aa98682f0dbddcb84, type: 3}
 --- !u!4 &8766102747320931414 stripped
 Transform:
