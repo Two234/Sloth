@@ -86,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("WalkX", direction.x);
         animator.SetFloat("WalkY", direction.y);
         animator.SetFloat("MoveMagnitude", rb.velocity.magnitude);
+        
 
     }
 }
