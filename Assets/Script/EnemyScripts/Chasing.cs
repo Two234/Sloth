@@ -5,20 +5,19 @@ public class Chasing : MonoBehaviour
     public float speed ;
     public Transform player;
     public bool CheckIfRanged = false;
-    float EnemyAttackDistance, sightDistance;
+    float sightDistance;
     private float speedingLevel;
     public float speeding;
     public float acceleration;
-    public int speedingLevels;
-    public int speedingMaxLevel;
+    public int speedingLevels, speedingMaxLevel;
     float EDF;
     [HideInInspector] public Transform EnemySight;
+    [HideInInspector] public bool isAttacking = false;
     void Awake(){
         foreach(Transform trans in transform)
             if (trans.name == "Sight")
                 EnemySight = trans;
         sightDistance = EnemySight.GetComponent<FieldofView>().distance;
-        EnemyAttackDistance = sightDistance / 4;
         speedingLevel = sightDistance / speedingLevels;
         speeding = speedingLevel;
     }
@@ -29,8 +28,8 @@ public class Chasing : MonoBehaviour
             EDF = Mathf.Sqrt(Mathf.Pow(player.position.x - transform.position.x,2) + Mathf.Pow( player.position.y - transform.position.y,2)); 
 
             bool playerDetected = EnemySight.GetComponent<FieldofView>().PlayerDetected;
-            bool isAttacking = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Melee Attack");
-            if(playerDetected == true && isAttacking == false){
+            isAttacking = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Melee Attack") || GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Ranged Attack");
+            if(playerDetected == true && isAttacking == false && (CheckIfRanged == false || EDF >= speeding * speedingMaxLevel)) {
                 if (EDF >= speeding * speedingMaxLevel){
                     speedingLevel = speedingLevels / (EDF * speeding);
                 }

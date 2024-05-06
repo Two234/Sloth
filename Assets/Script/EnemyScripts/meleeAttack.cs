@@ -6,7 +6,6 @@ public class meleeAttack : MonoBehaviour
     Transform player, EnemySight;
     public float range = 1f;
     public float delay = 1f ; // will affect the hit delay before the dagger comes out
-    bool attackRange = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,26 +18,17 @@ public class meleeAttack : MonoBehaviour
     {
         float EDF = Mathf.Sqrt(Mathf.Pow(transform.position.x - player.position.x, 2) + Mathf.Pow(transform.position.y - player.position.y, 2));
 
-        bool isAttacking = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Melee Attack");
+        bool isAttacking = GetComponent<Chasing>().isAttacking;
         
-        if (Mathf.Round(EDF) <= range && isAttacking == false){
-            Debug.Log(EnemySight.GetComponent<FieldofView>().PlayerDetected = true);
-            Debug.Log(EnemySight.GetComponent<FieldofView>().PlayerWasDetected = true);
+        if (Mathf.Ceil(EDF) < range && isAttacking == false){
+            EnemySight.GetComponent<FieldofView>().PlayerDetected = true;
+            EnemySight.GetComponent<FieldofView>().PlayerWasDetected = true;
 
             GetComponent<Animator>().SetTrigger("Attack");
             EnemySight.GetComponent<FieldofView>().Animate();
 
             StartCoroutine(MeleeAttackDelay());    
         }
-    }
-    void OnCollisionEnter2D(Collision2D col){
-        if (col.transform.tag == "Player"){
-            attackRange = true;
-        }
-    }
-    void OnCollisionExit2D(Collision2D col){
-        if (col.transform.tag == "Player")
-            attackRange = false;
     }
     IEnumerator MeleeAttackDelay(){
         RaycastHit2D melee = Physics2D.Raycast(transform.position, player.position - transform.position, range, LayerMask.GetMask(new string[]{"Player", "Obstacles"}));

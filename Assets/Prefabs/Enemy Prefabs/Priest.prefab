@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 6890725461602314216}
   - component: {fileID: 8161748800541279324}
   - component: {fileID: 6248489821497793994}
+  - component: {fileID: 2675312105698205650}
   m_Layer: 0
   m_Name: Priest
   m_TagString: Untagged
@@ -223,6 +224,7 @@ MonoBehaviour:
   speedingLevels: 10
   speedingMaxLevel: 5
   EnemySight: {fileID: 0}
+  isAttacking: 0
 --- !u!114 &1518411712313005363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,6 +325,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 1
   delay: 1
+--- !u!114 &2675312105698205650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967191326678028465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9ffebd81ec3004a9ce113b50bd6bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  bullet: {fileID: 2534981617935416057, guid: ed2b516fbf6c65e4a9e68c796deeedd2, type: 3}
+  startShotCoolDown: 1.5
 --- !u!1 &5472123075752274048
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +524,9 @@ MonoBehaviour:
   FieldOfView: 90
   distance: 10
   rotationSpeed: 0.5
+  isMoving: 0
   PlayerDetected: 0
+  PlayerWasDetected: 0
   material: {fileID: 2100000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
   player: {fileID: 0}
   Player:

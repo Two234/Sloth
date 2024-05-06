@@ -389,38 +389,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1034774619386304838, guid: 7a0ad8e65c2f0712381fbad127ecc047, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
-      value: -0.23869587
-      objectReference: {fileID: 0}
-    - target: {fileID: 1034774619386304838, guid: 7a0ad8e65c2f0712381fbad127ecc047, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
-      value: 0.36891705
-      objectReference: {fileID: 0}
-    - target: {fileID: 1034774619386304838, guid: 7a0ad8e65c2f0712381fbad127ecc047, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
-      value: -0.289779
-      objectReference: {fileID: 0}
-    - target: {fileID: 1034774619386304838, guid: 7a0ad8e65c2f0712381fbad127ecc047, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
-      value: -0.3164482
-      objectReference: {fileID: 0}
-    - target: {fileID: 1034774619386304838, guid: 7a0ad8e65c2f0712381fbad127ecc047, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
-      value: -0.28112355
-      objectReference: {fileID: 0}
-    - target: {fileID: 1034774619386304838, guid: 7a0ad8e65c2f0712381fbad127ecc047, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
-      value: -0.5016245
-      objectReference: {fileID: 0}
-    - target: {fileID: 1034774619386304838, guid: 7a0ad8e65c2f0712381fbad127ecc047, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].x
-      value: 0.28900316
-      objectReference: {fileID: 0}
-    - target: {fileID: 1034774619386304838, guid: 7a0ad8e65c2f0712381fbad127ecc047, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].y
-      value: 0.40724537
-      objectReference: {fileID: 0}
     - target: {fileID: 3505423254174388237, guid: 7a0ad8e65c2f0712381fbad127ecc047, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.1515
