@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 public class FieldofView : MonoBehaviour
 {
@@ -8,7 +7,7 @@ public class FieldofView : MonoBehaviour
     public float FieldOfView = 90f, distance = 10f;
     float arc ;
     public float rotationSpeed = 0.5f; 
-    bool isMoving = false;
+    public bool isMoving = false;
     [HideInInspector] public bool PlayerDetected = false, PlayerWasDetected = false;
     [SerializeField] private Material material;
     public Transform player;
@@ -34,8 +33,7 @@ public class FieldofView : MonoBehaviour
 
         angle -= arc;
         int trianglesIndex = 0;
-        PlayerDetected = false;
-        Vector2 prevertex = Vector2.zero;
+
         for (int i = 1 ; i <= ray ; i ++){
             // field of view is considered multiple small triangle to make the arc
             vertices[i] = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad) * distance, Mathf.Sin(angle * Mathf.Deg2Rad) * distance, 0);
@@ -79,6 +77,7 @@ public class FieldofView : MonoBehaviour
         }
         else if(PlayerDetected == true){
             transform.eulerAngles = new Vector3(0 , 0 , Mathf.Ceil(FieldOfView / 2 + Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg));
+            PlayerDetected = false;
         }
     }
     public IEnumerator LookAround(){

@@ -17,8 +17,14 @@ public class meleeAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float EDF = Mathf.Sqrt(Mathf.Pow(transform.position.x - player.position.x, 2) + Mathf.Pow(transform.position.y - player.position.y, 2));
+
         bool isAttacking = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Melee Attack");
-        if (attackRange && isAttacking == false){
+        
+        if (Mathf.Round(EDF) <= range && isAttacking == false){
+            Debug.Log(EnemySight.GetComponent<FieldofView>().PlayerDetected = true);
+            Debug.Log(EnemySight.GetComponent<FieldofView>().PlayerWasDetected = true);
+
             GetComponent<Animator>().SetTrigger("Attack");
             EnemySight.GetComponent<FieldofView>().Animate();
 
@@ -28,8 +34,6 @@ public class meleeAttack : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col){
         if (col.transform.tag == "Player"){
             attackRange = true;
-            EnemySight.GetComponent<FieldofView>().PlayerDetected = true;
-            EnemySight.GetComponent<FieldofView>().PlayerWasDetected = true;
         }
     }
     void OnCollisionExit2D(Collision2D col){
