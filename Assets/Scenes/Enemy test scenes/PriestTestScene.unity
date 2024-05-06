@@ -450,6 +450,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Priest
       objectReference: {fileID: 0}
+    - target: {fileID: 2675312105698205650, guid: 3497eaf13ad5529aa98682f0dbddcb84, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 2534981617935416057, guid: ed2b516fbf6c65e4a9e68c796deeedd2, type: 3}
+    - target: {fileID: 2675312105698205650, guid: 3497eaf13ad5529aa98682f0dbddcb84, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8766102747320931414}
+    - target: {fileID: 2675312105698205650, guid: 3497eaf13ad5529aa98682f0dbddcb84, type: 3}
+      propertyPath: startShotCoolDown
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4763261680086439089, guid: 3497eaf13ad5529aa98682f0dbddcb84, type: 3}
       propertyPath: player
       value: 

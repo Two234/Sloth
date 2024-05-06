@@ -83,7 +83,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 00fa8231b9219cbb3b4fc6bdedb34a59, type: 2}
+    m_Motion: {fileID: 7400000, guid: 1c6b3be876a0d378295595c08544f957, type: 2}
     m_Threshold: 0
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
@@ -91,7 +91,7 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: b8aca3f85419f6192a13e1b378ec9920, type: 2}
+    m_Motion: {fileID: 7400000, guid: 9242ca6c45a52ca06b841ee2ebafb751, type: 2}
     m_Threshold: 0.33333334
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -99,7 +99,7 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: e7874d40bdbdc0229a814a175b23351e, type: 2}
+    m_Motion: {fileID: 7400000, guid: 55b17b436baf036de86afb1efe7da3be, type: 2}
     m_Threshold: 0.6666667
     m_Position: {x: 0, y: -1}
     m_TimeScale: 1
@@ -107,7 +107,7 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 6c82e11b5e25b849dafbbee0f389534d, type: 2}
+    m_Motion: {fileID: 7400000, guid: 1cbc828e914409fa2a725ba50c8e3122, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
@@ -466,7 +466,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Priest
+  m_Name: Eye
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: AnimMoveX
