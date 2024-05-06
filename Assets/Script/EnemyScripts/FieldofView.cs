@@ -33,7 +33,7 @@ public class FieldofView : MonoBehaviour
 
         angle -= arc;
         int trianglesIndex = 0;
-
+        bool playerIsThere = false;
         for (int i = 1 ; i <= ray ; i ++){
             // field of view is considered multiple small triangle to make the arc
             vertices[i] = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad) * distance, Mathf.Sin(angle * Mathf.Deg2Rad) * distance, 0);
@@ -47,10 +47,8 @@ public class FieldofView : MonoBehaviour
                     vertices[i] = Quaternion.Euler(0, 0, -transform.eulerAngles.z) * vertices[i];
             }
             RaycastHit2D player = Physics2D.Raycast(transform.position, direction, Mathf.Sqrt(Mathf.Pow(vertices[i].x, 2) + Mathf.Pow(vertices[i].y, 2)), Player);
-            if (player){
-                    PlayerDetected = true;
-                    PlayerWasDetected = true;
-            } 
+            if (player)
+                    playerIsThere = true;
             if (i > 1){
                 triangles[trianglesIndex] = 0;
                 triangles[trianglesIndex + 1] = i - 1;
@@ -60,6 +58,8 @@ public class FieldofView : MonoBehaviour
             angle -= arc;
             colors[i] = color;
         }
+        PlayerDetected = playerIsThere;
+        PlayerWasDetected = playerIsThere;
 
         mesh.vertices = vertices;
         mesh.triangles = triangles;
@@ -77,7 +77,6 @@ public class FieldofView : MonoBehaviour
         }
         else if(PlayerDetected == true){
             transform.eulerAngles = new Vector3(0 , 0 , Mathf.Ceil(FieldOfView / 2 + Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg));
-            PlayerDetected = false;
         }
     }
     public IEnumerator LookAround(){

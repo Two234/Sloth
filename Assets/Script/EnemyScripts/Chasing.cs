@@ -6,8 +6,8 @@ public class Chasing : MonoBehaviour
     public Transform player;
     public bool CheckIfRanged = false;
     float sightDistance;
-    private float speedingLevel;
-    public float speeding;
+    float speedingLevel;
+    float speeding;
     public float acceleration;
     public int speedingLevels, speedingMaxLevel;
     float EDF;
