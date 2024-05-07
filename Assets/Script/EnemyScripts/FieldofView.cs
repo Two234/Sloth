@@ -10,10 +10,11 @@ public class FieldofView : MonoBehaviour
     public bool isMoving = false;
     [HideInInspector] public bool PlayerDetected = false, PlayerWasDetected = false;
     [SerializeField] private Material material;
-    public Transform player;
+    Transform player;
     [SerializeField] private LayerMask Player, Obstacles;
     public Color color;
     void Start(){
+        player = transform.parent.GetComponent<Chasing>().player;
         GetComponent<MeshRenderer>().materials = new Material[1]{material}; 
     }
     void LateUpdate(){

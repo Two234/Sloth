@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HitBox : MonoBehaviour
 {
-    public Transform healthBar;
+    Transform healthBar;
     Transform sight;
     public float hpAmount, speed;
     float reducedHP, healthPosition;
@@ -12,6 +12,7 @@ public class HitBox : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        foreach(Transform trans in transform) foreach(Transform hp in trans) if (hp.name == "health") healthBar = hp;
         reducedHP = healthBar.lossyScale.y / hpAmount;
         healthPosition = healthBar.lossyScale.y;
     }
