@@ -1,11 +1,13 @@
 using UnityEngine;
+using System.Collections;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed;
+    public float speed, timer;
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(deathAfter(timer));
         
     }
 
@@ -20,12 +22,16 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(this.gameObject);
             Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
         else if (collision.gameObject.tag == "Obstacles") Destroy(this);
         
 
         
+    }
+    public IEnumerator deathAfter(float timer){
+        yield return new WaitForSeconds(timer);
+        Destroy(gameObject);
     }
 }

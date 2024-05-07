@@ -7,6 +7,7 @@ public class Chasing : MonoBehaviour
     public bool CheckIfRanged = false;
     float sightDistance;
     float speedingLevel;
+    [HideInInspector] public bool isRanged;
     float speeding;
     public float acceleration;
     public int speedingLevels, speedingMaxLevel;
@@ -21,7 +22,12 @@ public class Chasing : MonoBehaviour
         speedingLevel = sightDistance / speedingLevels;
         speeding = speedingLevel;
     }
-
+    void Start(){
+        if (CheckIfRanged == true){
+            int i = Random.Range(1,3);
+            isRanged = i == 1;
+        }
+    }
     // Update is called once per frame
     void FixedUpdate(){
         if (player != null ){
@@ -29,7 +35,7 @@ public class Chasing : MonoBehaviour
 
             bool playerDetected = EnemySight.GetComponent<FieldofView>().PlayerDetected;
             isAttacking = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Melee Attack") || GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Ranged Attack");
-            if(playerDetected == true && isAttacking == false && (CheckIfRanged == false || EDF >= speeding * speedingMaxLevel)) {
+            if(playerDetected == true && isAttacking == false && (isRanged == false || EDF >= speeding * speedingMaxLevel)) {
                 if (EDF >= speeding * speedingMaxLevel){
                     speedingLevel = speedingLevels / (EDF * speeding);
                 }
@@ -39,6 +45,10 @@ public class Chasing : MonoBehaviour
             else {
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 speedingLevel = 0;
+                if (CheckIfRanged == true){
+                    int i = Random.Range(1,3);
+                    isRanged = i == 1;
+                }
             }
         }
         if (GetComponent<Animator>() != null){

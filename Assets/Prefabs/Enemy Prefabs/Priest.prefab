@@ -217,9 +217,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 75
-  player: {fileID: 0}
+  player: {fileID: 3505423254174388237, guid: 7a0ad8e65c2f0712381fbad127ecc047, type: 3}
   CheckIfRanged: 1
-  speeding: 1.2
+  isRanged: 0
   acceleration: 0.005
   speedingLevels: 10
   speedingMaxLevel: 5
@@ -237,7 +237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a73cd319f3e72e256b1922a4742e18ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 2147495423247893718}
   hpAmount: 3
   speed: 0.005
   isDead: 0
@@ -323,7 +322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba8bbc283acefb1cbbd5cc796ba145b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 1
+  attackFromBehind: 0
+  range: 2
   delay: 1
 --- !u!114 &2675312105698205650
 MonoBehaviour:
@@ -337,9 +337,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9ffebd81ec3004a9ce113b50bd6bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 3505423254174388237, guid: 7a0ad8e65c2f0712381fbad127ecc047, type: 3}
   bullet: {fileID: 2534981617935416057, guid: ed2b516fbf6c65e4a9e68c796deeedd2, type: 3}
-  startShotCoolDown: 1.5
+  startShotCoolDown: 3
 --- !u!1 &5472123075752274048
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +528,6 @@ MonoBehaviour:
   PlayerDetected: 0
   PlayerWasDetected: 0
   material: {fileID: 2100000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
-  player: {fileID: 0}
   Player:
     serializedVersion: 2
     m_Bits: 8

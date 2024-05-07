@@ -59,8 +59,9 @@ public class FieldofView : MonoBehaviour
             angle -= arc;
             colors[i] = color;
         }
-        PlayerDetected = playerIsThere;
-        PlayerWasDetected = playerIsThere;
+        
+        PlayerDetected = playerIsThere || transform.parent.GetComponent<meleeAttack>().attackFromBehind;
+        PlayerWasDetected = playerIsThere || transform.parent.GetComponent<meleeAttack>().attackFromBehind;
 
         mesh.vertices = vertices;
         mesh.triangles = triangles;
@@ -82,9 +83,9 @@ public class FieldofView : MonoBehaviour
     }
     public IEnumerator LookAround(){
         isMoving = true;
-        if (PlayerWasDetected == true){
+        if (PlayerWasDetected == true){ 
             PlayerWasDetected = false;
-            transform.Rotate(Vector3.zero + transform.eulerAngles, 0f);
+            transform.Rotate(transform.eulerAngles, 0f);
             yield return new WaitForSeconds(3f);
         }
         else{

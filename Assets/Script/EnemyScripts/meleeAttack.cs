@@ -4,6 +4,7 @@ using UnityEngine;
 public class meleeAttack : MonoBehaviour
 {
     Transform player, EnemySight;
+    public bool attackFromBehind = false;
     public float range = 1f;
     bool finished = true;
     public float delay = 1f ; // will affect the hit delay before the dagger comes out
@@ -20,18 +21,19 @@ public class meleeAttack : MonoBehaviour
         float EDF = Mathf.Sqrt(Mathf.Pow(transform.position.x - player.position.x, 2) + Mathf.Pow(transform.position.y - player.position.y, 2));
 
         bool isAttacking = GetComponent<Chasing>().isAttacking;
-        
-        if (Mathf.Ceil(EDF) < range && isAttacking == false && finished == true){
-            finished = false;
-            EnemySight.GetComponent<FieldofView>().PlayerDetected = true;
-            EnemySight.GetComponent<FieldofView>().PlayerWasDetected = true;
+        bool isRanged = GetComponent<Chasing>().isRanged;
+        if (Mathf.Ceil(EDF) <= range && isAttacking == false && finished == true && isRanged == false){
+            attackFromBehind = true;
 
             GetComponent<Animator>().SetTrigger("Melee");
             EnemySight.GetComponent<FieldofView>().Animate();
 
             StartCoroutine(MeleeAttackDelay());    
+            finished = false;
         }
+        else attackFromBehind = false;
     }
+    
     IEnumerator MeleeAttackDelay(){
         RaycastHit2D melee = Physics2D.Raycast(transform.position, player.position - transform.position, range, LayerMask.GetMask(new string[]{"Player", "Obstacles"}));
 
