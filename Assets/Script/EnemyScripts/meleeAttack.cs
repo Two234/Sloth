@@ -5,6 +5,7 @@ public class meleeAttack : MonoBehaviour
 {
     Transform player, EnemySight;
     public float range = 1f;
+    bool finished = true;
     public float delay = 1f ; // will affect the hit delay before the dagger comes out
     // Start is called before the first frame update
     void Start()
@@ -20,11 +21,12 @@ public class meleeAttack : MonoBehaviour
 
         bool isAttacking = GetComponent<Chasing>().isAttacking;
         
-        if (Mathf.Ceil(EDF) < range && isAttacking == false){
+        if (Mathf.Ceil(EDF) < range && isAttacking == false && finished == true){
+            finished = false;
             EnemySight.GetComponent<FieldofView>().PlayerDetected = true;
             EnemySight.GetComponent<FieldofView>().PlayerWasDetected = true;
 
-            GetComponent<Animator>().SetTrigger("Attack");
+            GetComponent<Animator>().SetTrigger("Melee");
             EnemySight.GetComponent<FieldofView>().Animate();
 
             StartCoroutine(MeleeAttackDelay());    
@@ -42,6 +44,6 @@ public class meleeAttack : MonoBehaviour
         if (melee.transform.name == "Player")
             Debug.Log("Melee hit");
         
-        
+        finished = true;
     }
 }
