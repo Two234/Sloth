@@ -215,39 +215,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &835786588 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5399467030633548472, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
-  m_PrefabInstance: {fileID: 8274964247904731442}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &835786590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 835786588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 644a5640e20ebc287a1d58ed6ff7098b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ray: 50
-  FieldOfView: 90
-  distance: 10
-  rotationSpeed: 0.5
-  isMoving: 0
-  PlayerDetected: 0
-  PlayerWasDetected: 0
-  material: {fileID: 2100000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
-  player: {fileID: 8766102747320931414}
-  Player:
-    serializedVersion: 2
-    m_Bits: 8
-  Obstacles:
-    serializedVersion: 2
-    m_Bits: 64
-  color: {r: 0, g: 0, b: 0, a: 0.10980392}
 --- !u!1 &1262039665
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,6 +446,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 900421813202980865, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8766102747320931414}
     - target: {fileID: 1265777958904136313, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.5
@@ -523,10 +494,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 8766102747320931414}
-    - target: {fileID: 3059840624162190328, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 95527a41c2aa75af7bd398c905921786, type: 2}
     - target: {fileID: 3328079163507418159, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
       propertyPath: m_Name
       value: Eyeball
@@ -535,14 +502,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 8766102747320931414}
-    m_RemovedComponents:
-    - {fileID: 6815199247090585269, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5399467030633548472, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 835786590}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
 --- !u!4 &8766102747320931414 stripped
 Transform:

@@ -27,8 +27,8 @@ public class RangeAttackEnemy : MonoBehaviour
             if (shotCoolDown <= 0 && sight.GetComponent<FieldofView>().PlayerDetected == true && isAttacking == false) //checks after a certain amount of time that a instance of a bullet is created where teh enemy is 
             {
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-                newBullet.transform.rotation = Quaternion.Euler(0, 0, angle- 90);
+                // GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+                // newBullet.transform.rotation = Quaternion.Euler(0, 0, angle- 90);
                 shotCoolDown = startShotCoolDown;
                 GetComponent<Animator>().SetTrigger("Ranged");
                 sight.GetComponent<FieldofView>().Animate();
