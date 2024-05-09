@@ -1,10 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Chasing : MonoBehaviour
 {
     public float speed ;
     public Transform player;
-    public bool CheckIfRanged = false;
+    public bool CheckIfRanged = false, CheckIfMelee = false;
     float sightDistance;
     float speedingLevel;
     [HideInInspector] public bool isRanged;
@@ -15,6 +16,8 @@ public class Chasing : MonoBehaviour
     [HideInInspector] public Transform EnemySight;
     [HideInInspector] public bool isAttacking = false;
     void Awake(){
+        CheckIfRanged = GetComponent<meleeAttack>() != null;
+        CheckIfMelee = GetComponent<RangeAttackEnemy>() != null;
         foreach(Transform trans in transform)
             if (trans.name == "Sight")
                 EnemySight = trans;
@@ -23,10 +26,11 @@ public class Chasing : MonoBehaviour
         speeding = speedingLevel;
     }
     void Start(){
-        if (CheckIfRanged == true){
+        if (CheckIfRanged == true && CheckIfMelee == true){
             int i = Random.Range(1,3);
             isRanged = i == 1;
         }
+        else isRanged = true;
     }
     // Update is called once per frame
     void FixedUpdate(){
@@ -45,7 +49,7 @@ public class Chasing : MonoBehaviour
             else {
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 speedingLevel = 0;
-                if (CheckIfRanged == true){
+                if (CheckIfRanged == true && CheckIfMelee == true){
                     int i = Random.Range(1,3);
                     isRanged = i == 1;
                 }

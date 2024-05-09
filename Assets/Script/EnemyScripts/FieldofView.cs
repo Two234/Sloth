@@ -77,12 +77,14 @@ public class FieldofView : MonoBehaviour
     }
     void Update(){
         // the funcitonality of the FOV
-        Vector2 direction = player.position - transform.position;
-        if (isMoving == false && PlayerDetected == false){
-            StartCoroutine(LookAround());
-        }
-        else if(PlayerDetected == true){
-            transform.eulerAngles = new Vector3(0 , 0 , Mathf.Ceil(FieldOfView / 2 + Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg));
+        if (player != null){
+            Vector2 direction = player.position - transform.position;
+            if (isMoving == false && PlayerDetected == false){
+                StartCoroutine(LookAround());
+            }
+            else if(PlayerDetected == true){
+                transform.eulerAngles = new Vector3(0 , 0 , Mathf.Ceil(FieldOfView / 2 + Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg));
+            }
         }
     }
     public IEnumerator LookAround(){
