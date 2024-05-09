@@ -59,10 +59,14 @@ public class FieldofView : MonoBehaviour
             angle -= arc;
             colors[i] = color;
         }
-        
-        PlayerDetected = playerIsThere || transform.parent.GetComponent<meleeAttack>().attackFromBehind;
-        PlayerWasDetected = playerIsThere || transform.parent.GetComponent<meleeAttack>().attackFromBehind;
-
+        if (transform.parent.GetComponent<meleeAttack>() != null){
+            PlayerDetected = playerIsThere || transform.parent.GetComponent<meleeAttack>().attackFromBehind;
+            PlayerWasDetected = playerIsThere || transform.parent.GetComponent<meleeAttack>().attackFromBehind;
+        }
+        else{
+            PlayerDetected = playerIsThere;
+            PlayerWasDetected = playerIsThere;
+        }
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.bounds = new Bounds(Vector3.zero, Vector3.one * 1000f);

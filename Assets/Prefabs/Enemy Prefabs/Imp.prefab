@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 6248489821497793994}
   m_Layer: 0
   m_Name: Imp
-  m_TagString: Untagged
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,6 +218,7 @@ MonoBehaviour:
   speed: 75
   player: {fileID: 0}
   CheckIfRanged: 1
+  isRanged: 0
   acceleration: 0.005
   speedingLevels: 10
   speedingMaxLevel: 5
@@ -235,7 +236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a73cd319f3e72e256b1922a4742e18ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 2147495423247893718}
   hpAmount: 3
   speed: 0.005
   isDead: 0
@@ -321,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba8bbc283acefb1cbbd5cc796ba145b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackFromBehind: 0
   range: 2
   delay: 1
 --- !u!1 &5472123075752274048
@@ -511,7 +512,6 @@ MonoBehaviour:
   PlayerDetected: 0
   PlayerWasDetected: 0
   material: {fileID: 2100000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
-  player: {fileID: 0}
   Player:
     serializedVersion: 2
     m_Bits: 8
