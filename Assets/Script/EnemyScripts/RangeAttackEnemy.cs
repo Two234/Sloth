@@ -51,6 +51,9 @@ public class RangeAttackEnemy : MonoBehaviour
             newBullet.GetComponent<Bullet>().timer = 5;
             newBullet.GetComponent<Chasing>().player = GetComponent<Chasing>().player;
             newBullet.GetComponent<Chasing>().EnemySight.GetComponent<FieldofView>().startingAngle = GetComponent<Chasing>().EnemySight.eulerAngles.z;
+
+            newBullet.layer = LayerMask.NameToLayer("Summoned Watcher");
+
         }
         else
             newBullet.transform.rotation = Quaternion.Euler(0, 0, angle- 90);
