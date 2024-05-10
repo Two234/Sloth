@@ -447,9 +447,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 900421813202980865, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 8766102747320931414}
+      propertyPath: startingAngle
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 1265777958904136313, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.5
@@ -490,6 +490,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1905621165603340508, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7817658
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905621165603340508, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.6235721
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905621165603340508, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -77.155
+      objectReference: {fileID: 0}
     - target: {fileID: 2217683516552114147, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
       propertyPath: player
       value: 
@@ -497,6 +509,14 @@ PrefabInstance:
     - target: {fileID: 3328079163507418159, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
       propertyPath: m_Name
       value: Eyeball
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913309055048653664, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1684947292, guid: cb63c289a565de547aa415c90a65ded4, type: 3}
+    - target: {fileID: 3913309055048653664, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6585456510689704154, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
       propertyPath: player

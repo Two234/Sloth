@@ -12,10 +12,12 @@ public class FieldofView : MonoBehaviour
     [SerializeField] private Material material;
     Transform player;
     [SerializeField] private LayerMask Player, Obstacles;
+    [HideInInspector] public float startingAngle = 0;
     public Color color;
     void Start(){
         player = transform.parent.GetComponent<Chasing>().player;
         GetComponent<MeshRenderer>().materials = new Material[1]{material}; 
+        transform.eulerAngles = new Vector3(0, 0, startingAngle);
     }
     void LateUpdate(){
         arc = FieldOfView / ray; 

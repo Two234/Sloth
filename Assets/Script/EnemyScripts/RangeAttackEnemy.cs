@@ -3,34 +3,28 @@ using UnityEngine;
 
 public class RangeAttackEnemy : MonoBehaviour
 {
-    public Transform player;
+    Transform player;
     public GameObject bullet;
     float angle;
     private float shotCoolDown;
     public  float startShotCoolDown;
     Transform sight;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        if(startShotCoolDown == 0 ){
-            startShotCoolDown = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
-        }
         player = GetComponent<Chasing>().player;
-        shotCoolDown = startShotCoolDown; 
-        foreach(Transform trans in transform) if (trans.name == "Sight") sight = trans;
-        
+        sight = GetComponent<Chasing>().EnemySight;
     }
-
     // Update is called once per frame
     void Update()
     {
-        //direction that the enemy will look at 
         if (player != null){
-            Vector2 direction= new Vector2(player.position.x - transform.position.x ,player.position.y-transform.position.y);
             bool isAttacking = GetComponent<Chasing>().isAttacking ;
             bool isRanged = GetComponent<Chasing>().isRanged; 
-            Debug.Log(sight.GetComponent<FieldofView>().PlayerDetected);
-            if (shotCoolDown <= 0 && sight.GetComponent<FieldofView>().PlayerDetected == true && isAttacking == false && isRanged == true) //checks after a certain amount of time that a instance of a bullet is created where teh enemy is 
+            bool PlayerDetected = sight.GetComponent<FieldofView>().PlayerDetected;
+            Vector2 direction = new Vector2(player.position.x - transform.position.x ,player.position.y-transform.position.y);
+            //direction that the enemy will look at 
+            if (shotCoolDown <= 0 && PlayerDetected == true && isAttacking == false && isRanged == true) //checks after a certain amount of time that a instance of a bullet is created where teh enemy is 
             {
                 angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 StartCoroutine(AttackDelay());
@@ -41,6 +35,7 @@ public class RangeAttackEnemy : MonoBehaviour
             else { shotCoolDown-=Time.deltaTime; }
         }
     }
+    
     IEnumerator AttackDelay(){
         float time = 0;
         float length = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
@@ -49,7 +44,15 @@ public class RangeAttackEnemy : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
         GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-        newBullet.transform.rotation = Quaternion.Euler(0, 0, angle- 90);
         
+        if (newBullet.GetComponent<Bullet>() == null){
+        
+            newBullet.AddComponent<Bullet>().speed = 0;
+            newBullet.GetComponent<Bullet>().timer = 5;
+            newBullet.GetComponent<Chasing>().player = GetComponent<Chasing>().player;
+            newBullet.GetComponent<Chasing>().EnemySight.GetComponent<FieldofView>().startingAngle = GetComponent<Chasing>().EnemySight.eulerAngles.z;
+        }
+        else
+            newBullet.transform.rotation = Quaternion.Euler(0, 0, angle- 90);
     }
 }

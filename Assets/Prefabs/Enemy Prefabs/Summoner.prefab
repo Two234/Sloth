@@ -218,10 +218,11 @@ MonoBehaviour:
   speed: 75
   player: {fileID: 0}
   CheckIfRanged: 1
+  CheckIfMelee: 0
   isRanged: 0
   acceleration: 0.005
   speedingLevels: 10
-  speedingMaxLevel: 5
+  speedingMaxLevel: 10
   EnemySight: {fileID: 0}
   isAttacking: 0
 --- !u!114 &1518411712313005363
@@ -321,8 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9ffebd81ec3004a9ce113b50bd6bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  bullet: {fileID: 0}
+  bullet: {fileID: 3328079163507418159, guid: e6fd1696f035fb24ca13357fc1ab08a2, type: 3}
   startShotCoolDown: 3
 --- !u!1 &5472123075752274048
 GameObject:
@@ -518,4 +518,5 @@ MonoBehaviour:
   Obstacles:
     serializedVersion: 2
     m_Bits: 64
+  startingAngle: 0
   color: {r: 0, g: 0, b: 0, a: 0.22352941}

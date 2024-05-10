@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Chasing : MonoBehaviour
@@ -16,8 +15,9 @@ public class Chasing : MonoBehaviour
     [HideInInspector] public Transform EnemySight;
     [HideInInspector] public bool isAttacking = false;
     void Awake(){
-        CheckIfRanged = GetComponent<meleeAttack>() != null;
-        CheckIfMelee = GetComponent<RangeAttackEnemy>() != null;
+        CheckIfRanged = GetComponent<RangeAttackEnemy>() != null;
+        CheckIfMelee = GetComponent<meleeAttack>() != null;
+        
         foreach(Transform trans in transform)
             if (trans.name == "Sight")
                 EnemySight = trans;
@@ -30,7 +30,7 @@ public class Chasing : MonoBehaviour
             int i = Random.Range(1,3);
             isRanged = i == 1;
         }
-        else isRanged = true;
+        else isRanged = CheckIfMelee == false;
     }
     // Update is called once per frame
     void FixedUpdate(){
@@ -53,6 +53,7 @@ public class Chasing : MonoBehaviour
                     int i = Random.Range(1,3);
                     isRanged = i == 1;
                 }
+                else isRanged = CheckIfMelee == false;
             }
         }
         if (GetComponent<Animator>() != null){

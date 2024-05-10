@@ -131,26 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 863982177563389647, guid: 4a0df6d763d09738ea188097020af75b, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 8766102747320931414}
     - target: {fileID: 1967191326678028465, guid: 4a0df6d763d09738ea188097020af75b, type: 3}
       propertyPath: m_Name
       value: Summoner
       objectReference: {fileID: 0}
-    - target: {fileID: 4441606591371973812, guid: 4a0df6d763d09738ea188097020af75b, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 614707081, guid: 71b8545ac8f006dd1b9feaeafaa18b11, type: 3}
-    - target: {fileID: 4763261680086439089, guid: 4a0df6d763d09738ea188097020af75b, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 8766102747320931414}
-    - target: {fileID: 6890725461602314216, guid: 4a0df6d763d09738ea188097020af75b, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: f1005eaa58c3cefe58ab529aa08e83a4, type: 2}
     - target: {fileID: 8070432143295815993, guid: 4a0df6d763d09738ea188097020af75b, type: 3}
       propertyPath: player
       value: 

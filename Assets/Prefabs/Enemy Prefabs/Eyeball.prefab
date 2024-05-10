@@ -258,7 +258,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &930741289075105899
@@ -338,6 +338,7 @@ MonoBehaviour:
   speed: 75
   player: {fileID: 0}
   CheckIfRanged: 1
+  CheckIfMelee: 0
   isRanged: 0
   acceleration: 0.005
   speedingLevels: 10
