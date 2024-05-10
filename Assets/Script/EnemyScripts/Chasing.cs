@@ -7,6 +7,7 @@ public class Chasing : MonoBehaviour
     public bool CheckIfRanged = false, CheckIfMelee = false;
     float sightDistance;
     float speedingLevel;
+    bool collidePlayer;
     [HideInInspector] public bool isRanged;
     float speeding;
     public float acceleration;
@@ -44,7 +45,10 @@ public class Chasing : MonoBehaviour
                     speedingLevel = speedingLevels / (EDF * speeding);
                 }
                 else speedingLevel = speedingLevels / speedingMaxLevel;
-                GetComponent<Rigidbody2D>().velocity = (player.position - transform.position).normalized * speed * speedingLevel * Time.deltaTime;
+                if (collidePlayer == false){
+                    GetComponent<Rigidbody2D>().velocity = (player.position - transform.position).normalized * speed * speedingLevel * Time.deltaTime;
+                }
+                else GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
             else {
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -61,5 +65,13 @@ public class Chasing : MonoBehaviour
             GetComponent<Animator>().SetFloat("MoveMagnitude", GetComponent<Rigidbody2D>().velocity.magnitude);
         }
             
+    }
+    void OnCollisionEnter2D(Collision2D col){
+        if (col.transform.tag == "Player")
+            collidePlayer = true;
+    }
+    void OnCollisionExit2D(Collision2D col){
+        if(col.transform.tag == "Player")
+            collidePlayer = false;
     }
 }
