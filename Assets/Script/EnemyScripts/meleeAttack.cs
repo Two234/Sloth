@@ -35,7 +35,6 @@ public class meleeAttack : MonoBehaviour
     }
     
     IEnumerator MeleeAttackDelay(){
-        RaycastHit2D melee = Physics2D.Raycast(transform.position, player.position - transform.position, range, LayerMask.GetMask(new string[]{"Player", "Obstacles"}));
 
         float time = 0, animLength = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
         while (time < animLength / delay){
@@ -43,7 +42,9 @@ public class meleeAttack : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
 
-        if (melee.transform.name == "Player")
+        RaycastHit2D melee = Physics2D.Raycast(transform.position, player.position - transform.position, range, LayerMask.GetMask(new string[]{"Player", "Obstacles"}));
+
+        if (melee && melee.transform.name == "Player")
             Debug.Log("Melee hit");
         
         finished = true;

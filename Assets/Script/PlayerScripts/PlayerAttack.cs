@@ -11,34 +11,31 @@ public class PlayerAttack : MonoBehaviour
 
     public Animator animator;
     public float delay = 0.3f;
-    private bool attackBlocked;
+    private bool attackBlocked = true;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        StartCoroutine(DelayAttack());
         
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0) && attackBlocked == false)
         {
             Attack.SetActive(true);
-            attackBlocked = true;
+            StartCoroutine(DelayAttack());
+            animator.SetTrigger("Attack");
         }
-
-        if (attackBlocked)
-            return;
-        animator.SetTrigger("Attack");
-        attackBlocked = true;
-        StartCoroutine(DelayAttack());
     }
 
     private IEnumerator DelayAttack()
     {
-        yield return new WaitForSeconds(delay);
+        attackBlocked = true;
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         attackBlocked = false;
     }
 }
