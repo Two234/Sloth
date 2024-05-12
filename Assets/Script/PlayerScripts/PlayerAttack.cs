@@ -17,25 +17,18 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        StartCoroutine(DelayAttack());
         
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        if (Input.GetMouseButtonDown(0) && attackBlocked == false)
+        bool isAttacking = animator.GetCurrentAnimatorStateInfo(0).IsName("playerattack");
+
+        if (Input.GetMouseButtonDown(0) && isAttacking == false)
         {
             Attack.SetActive(true);
-            StartCoroutine(DelayAttack());
             animator.SetTrigger("Attack");
         }
-    }
-
-    private IEnumerator DelayAttack()
-    {
-        attackBlocked = true;
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        attackBlocked = false;
     }
 }
