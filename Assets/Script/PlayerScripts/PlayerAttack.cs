@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public GameObject Attack;
-    public float slashSpeed = 10;
+    public float slashSpeed = 20;
     public GameObject HitBox;
     public float meleeAttackRange = 2f;
     public Animator animator;
