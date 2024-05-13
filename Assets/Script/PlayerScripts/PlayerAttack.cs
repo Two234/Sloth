@@ -1,15 +1,18 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
     public GameObject Attack;
     public float slashSpeed = 20;
+    public float attackPushForce = 100;
     public GameObject HitBox;
     public float meleeAttackRange = 2f;
     public Animator animator;
     public float delay = 0.3f;
     [HideInInspector] public bool isAttacking;
+    public LayerMask layerMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +24,6 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         bool isAttacking = animator.GetCurrentAnimatorStateInfo(0).IsName("playerattack");
-
         if (Input.GetMouseButtonDown(0) && isAttacking == false)
         {
             Attack.SetActive(true);
@@ -30,10 +32,12 @@ public class PlayerAttack : MonoBehaviour
         }
     }
     public IEnumerator AttackField(){
+        isAttacking = true;
         Vector2 direction = GetComponent<PlayerMovement>().direction;
         float playerAngle= (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 360) % 360;
         float arc = 90 / slashSpeed;
         float angle = 0;
+        List<GameObject> enemies = new List<GameObject>();
         while (angle <= 90){
             float attackAngle;
             if (315f < playerAngle || playerAngle <= 45f)
@@ -43,15 +47,21 @@ public class PlayerAttack : MonoBehaviour
             else if(135f < playerAngle && playerAngle <= 225)
                 attackAngle = 135;
             else attackAngle = 225;
-
-            Debug.DrawRay(
-                transform.position,
-                new Vector3(Mathf.Cos((attackAngle + angle) * Mathf.Deg2Rad) * meleeAttackRange, Mathf.Sin((attackAngle + angle) * Mathf.Deg2Rad) * meleeAttackRange, 0),
-                Color.blue
-            );
-            angle += arc;
-            yield return new WaitForSeconds(Time.deltaTime);
+            Vector2 AttackDirection = new Vector2(Mathf.Cos((attackAngle + angle) * Mathf.Deg2Rad), Mathf.Sin((attackAngle + angle) * Mathf.Deg2Rad));
+            RaycastHit2D melee = Physics2D.Raycast(transform.position, AttackDirection, meleeAttackRange, layerMask);
             
+            if(melee){
+                if (melee.transform.tag == "Enemies" && enemies.Contains(melee.transform.gameObject) == false){ 
+                    Debug.Log("hello world");
+                    melee.transform.GetComponent<HitBox>().hit = true;
+                    // melee.transform.GetComponent<Rigidbody2D>().AddForce(AttackDirection * attackPushForce);
+                    melee.transform.GetComponent<Rigidbody2D>().velocity = AttackDirection * attackPushForce;
+                }
+                enemies.Add(melee.transform.gameObject);
+            }
+            angle += arc;
+            yield return new WaitForSeconds(Time.deltaTime);            
         }
+        isAttacking = false;
     }
 }

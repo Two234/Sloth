@@ -8,6 +8,7 @@ public class HitBox : MonoBehaviour
     public float hpAmount, speed;
     float reducedHP, healthPosition;
     public bool isDead = true;
+    public bool hit = false;
     float time = 0f;
     // Start is called before the first frame update
     void Awake()
@@ -35,10 +36,10 @@ public class HitBox : MonoBehaviour
 
             
         }
-    }
-    void OnTriggerEnter2D(Collider2D col){
-        if (col.gameObject.tag == "Attack" && healthPosition > 0f){
-            StartCoroutine(reductionTransition()); 
+        
+        if (hit == true && healthPosition > 0f){
+            hit = false;
+            StartCoroutine(reductionTransition());
         }
     }
     IEnumerator reductionTransition(){

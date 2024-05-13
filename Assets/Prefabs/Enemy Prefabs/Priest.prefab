@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 8161748800541279324}
   - component: {fileID: 6248489821497793994}
   - component: {fileID: 2675312105698205650}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Priest
   m_TagString: Enemies
   m_Icon: {fileID: 0}
@@ -219,6 +219,7 @@ MonoBehaviour:
   speed: 75
   player: {fileID: 0}
   CheckIfRanged: 1
+  CheckIfMelee: 0
   isRanged: 0
   acceleration: 0.005
   speedingLevels: 10
@@ -240,6 +241,7 @@ MonoBehaviour:
   hpAmount: 3
   speed: 0.005
   isDead: 0
+  hit: 0
 --- !u!95 &6890725461602314216
 Animator:
   serializedVersion: 5
@@ -337,7 +339,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9ffebd81ec3004a9ce113b50bd6bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3505423254174388237, guid: 7a0ad8e65c2f0712381fbad127ecc047, type: 3}
   bullet: {fileID: 2534981617935416057, guid: ed2b516fbf6c65e4a9e68c796deeedd2, type: 3}
   startShotCoolDown: 3
 --- !u!1 &5472123075752274048
@@ -534,4 +535,5 @@ MonoBehaviour:
   Obstacles:
     serializedVersion: 2
     m_Bits: 64
+  startingAngle: 0
   color: {r: 0, g: 0, b: 0, a: 0.22352941}

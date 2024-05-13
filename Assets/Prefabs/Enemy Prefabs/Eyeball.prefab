@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 6585456510689704154}
   - component: {fileID: 847919551762116667}
   - component: {fileID: 3059840624162190328}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Eyeball
   m_TagString: Enemies
   m_Icon: {fileID: 0}
@@ -357,7 +357,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9ffebd81ec3004a9ce113b50bd6bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   bullet: {fileID: 2534981617935416057, guid: ed2b516fbf6c65e4a9e68c796deeedd2, type: 3}
   startShotCoolDown: 3
 --- !u!114 &847919551762116667
@@ -375,6 +374,7 @@ MonoBehaviour:
   hpAmount: 3
   speed: 0.05
   isDead: 0
+  hit: 0
 --- !u!95 &3059840624162190328
 Animator:
   serializedVersion: 5
@@ -505,4 +505,5 @@ MonoBehaviour:
   Obstacles:
     serializedVersion: 2
     m_Bits: 64
+  startingAngle: 0
   color: {r: 0, g: 0, b: 0, a: 0.10980392}

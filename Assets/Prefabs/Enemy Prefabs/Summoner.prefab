@@ -240,6 +240,7 @@ MonoBehaviour:
   hpAmount: 3
   speed: 0.005
   isDead: 0
+  hit: 0
 --- !u!95 &6890725461602314216
 Animator:
   serializedVersion: 5

@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 6890725461602314216}
   - component: {fileID: 8161748800541279324}
   - component: {fileID: 6248489821497793994}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Imp
   m_TagString: Enemies
   m_Icon: {fileID: 0}
@@ -218,6 +218,7 @@ MonoBehaviour:
   speed: 75
   player: {fileID: 0}
   CheckIfRanged: 1
+  CheckIfMelee: 0
   isRanged: 0
   acceleration: 0.005
   speedingLevels: 10
@@ -239,6 +240,7 @@ MonoBehaviour:
   hpAmount: 3
   speed: 0.005
   isDead: 0
+  hit: 0
 --- !u!95 &6890725461602314216
 Animator:
   serializedVersion: 5
@@ -518,4 +520,5 @@ MonoBehaviour:
   Obstacles:
     serializedVersion: 2
     m_Bits: 64
+  startingAngle: 0
   color: {r: 0, g: 0, b: 0, a: 0.22352941}
