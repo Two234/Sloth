@@ -24,7 +24,7 @@ public class meleeAttack : MonoBehaviour
         bool isRanged = GetComponent<Chasing>().isRanged;
         if (Mathf.Ceil(EDF) <= range && isAttacking == false && finished == true && isRanged == false){
             attackFromBehind = true;
-
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             GetComponent<Animator>().SetTrigger("Melee");
             EnemySight.GetComponent<FieldofView>().Animate();
 

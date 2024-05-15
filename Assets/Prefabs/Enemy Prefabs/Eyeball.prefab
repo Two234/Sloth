@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48592e07e44efe01897dcd408b33ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 75
+  speed: 1
   player: {fileID: 0}
   CheckIfRanged: 1
   CheckIfMelee: 0

@@ -26,6 +26,7 @@ public class RangeAttackEnemy : MonoBehaviour
             //direction that the enemy will look at 
             if (shotCoolDown <= 0 && PlayerDetected == true && isAttacking == false && isRanged == true) //checks after a certain amount of time that a instance of a bullet is created where teh enemy is 
             {
+                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 StartCoroutine(AttackDelay());
                 shotCoolDown = startShotCoolDown;

@@ -6,11 +6,11 @@ public class PlayerAttack : MonoBehaviour
 {
     public GameObject Attack;
     public float slashSpeed = 20;
-    public float attackPushForce = 100;
+    public float attackPushForce = 0.1f;
+    public float pushDistance = 2f;
     public GameObject HitBox;
     public float meleeAttackRange = 2f;
     public Animator animator;
-    public float delay = 0.3f;
     [HideInInspector] public bool isAttacking;
     public LayerMask layerMask;
     // Start is called before the first frame update
@@ -52,16 +52,35 @@ public class PlayerAttack : MonoBehaviour
             
             if(melee){
                 if (melee.transform.tag == "Enemies" && enemies.Contains(melee.transform.gameObject) == false){ 
-                    Debug.Log("hello world");
+                    
                     melee.transform.GetComponent<HitBox>().hit = true;
-                    // melee.transform.GetComponent<Rigidbody2D>().AddForce(AttackDirection * attackPushForce);
-                    melee.transform.GetComponent<Rigidbody2D>().velocity = AttackDirection * attackPushForce;
+                    StartCoroutine(AttackPush(melee, AttackDirection));
+                    melee.transform.position = Vector3.Lerp(melee.transform.position, direction * pushDistance, attackPushForce);
+
+                    enemies.Add(melee.transform.gameObject);
                 }
-                enemies.Add(melee.transform.gameObject);
             }
             angle += arc;
             yield return new WaitForSeconds(Time.deltaTime);            
         }
         isAttacking = false;
+    }       
+    IEnumerator AttackPush(RaycastHit2D melee, Vector3 direction){
+        melee.rigidbody.velocity = Vector2.zero;
+        
+        melee.transform.GetComponent<Chasing>().beingPushed = true;
+        Vector3 initPos = melee.transform.position;
+
+        float diff = abs(melee.transform.position - (initPos + direction * pushDistance)).magnitude;
+        while (diff >= 1e-2){
+            melee.transform.position = Vector2.Lerp(melee.transform.position, initPos + direction * pushDistance, attackPushForce); 
+            Debug.Log("hello world");
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        melee.transform.GetComponent<Chasing>().beingPushed = false;
     }
+    Vector2 abs(Vector2 vector){
+        return new Vector2(Mathf.Abs(vector.x), Mathf.Abs(vector.y));
+    }
+
 }

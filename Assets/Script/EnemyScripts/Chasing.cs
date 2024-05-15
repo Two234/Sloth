@@ -8,7 +8,7 @@ public class Chasing : MonoBehaviour
     float sightDistance;
     float speedingLevel;
     bool collidePlayer;
-    [HideInInspector] public bool isRanged;
+    [HideInInspector] public bool isRanged, beingPushed;
     float speeding;
     public float acceleration;
     public int speedingLevels, speedingMaxLevel;
@@ -18,7 +18,6 @@ public class Chasing : MonoBehaviour
     void Awake(){
         CheckIfRanged = GetComponent<RangeAttackEnemy>() != null;
         CheckIfMelee = GetComponent<meleeAttack>() != null;
-        
         foreach(Transform trans in transform)
             if (trans.name == "Sight")
                 EnemySight = trans;
@@ -40,24 +39,26 @@ public class Chasing : MonoBehaviour
 
             bool playerDetected = EnemySight.GetComponent<FieldofView>().PlayerDetected;
             isAttacking = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Melee Attack") || GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Ranged Attack");
-            if(playerDetected == true && isAttacking == false && (isRanged == false || EDF >= speeding * speedingMaxLevel)) {
-                if (EDF >= speeding * speedingMaxLevel){
-                    speedingLevel = speedingLevels / (EDF * speeding);
+
+            if(beingPushed == false){
+                if(playerDetected == true && isAttacking == false && (isRanged == false || EDF >= speeding * speedingMaxLevel)) {
+                    if (EDF >= speeding * speedingMaxLevel)
+                        speedingLevel = speedingLevels / (EDF * speeding);
+                    else speedingLevel = speedingLevels / speedingMaxLevel;
+                    if (collidePlayer == false)
+                        GetComponent<Rigidbody2D>().velocity = (player.position - transform.position).normalized * speed * speedingLevel;
+                    else
+                        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 }
-                else speedingLevel = speedingLevels / speedingMaxLevel;
-                if (collidePlayer == false){
-                    GetComponent<Rigidbody2D>().velocity = (player.position - transform.position).normalized * speed * speedingLevel * Time.deltaTime;
+                else{
+                    GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                    speedingLevel = 0;
+                    if (CheckIfRanged == true && CheckIfMelee == true){
+                        int i = Random.Range(1,3);
+                        isRanged = i == 1;
+                    }
+                    else isRanged = CheckIfMelee == false;
                 }
-                else GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            }
-            else {
-                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                speedingLevel = 0;
-                if (CheckIfRanged == true && CheckIfMelee == true){
-                    int i = Random.Range(1,3);
-                    isRanged = i == 1;
-                }
-                else isRanged = CheckIfMelee == false;
             }
         }
         if (GetComponent<Animator>() != null){
