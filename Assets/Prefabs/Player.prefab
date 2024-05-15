@@ -222,11 +222,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attack: {fileID: 8042833703840928508}
   slashSpeed: 20
-  attackPushForce: 100
+  attackPushForce: 0.05
+  pushDistance: 5
   HitBox: {fileID: 9136596706693056032}
   meleeAttackRange: 1
   animator: {fileID: 0}
-  delay: 0.3
   isAttacking: 0
   layerMask:
     serializedVersion: 2
