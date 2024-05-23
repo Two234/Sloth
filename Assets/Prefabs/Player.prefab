@@ -222,7 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attack: {fileID: 8042833703840928508}
   slashSpeed: 20
-  attackPushForce: 0.05
+  attackPushForce: 0.1
   pushDistance: 5
   pushSpeed: 0.1
   HitBox: {fileID: 9136596706693056032}
