@@ -56,7 +56,7 @@ public class PlayerAttack : MonoBehaviour
                     
                     melee.transform.GetComponent<HitBox>().hit = true;
                     StartCoroutine(AttackPush(melee, AttackDirection));
-                    melee.transform.position = Vector3.Lerp(melee.transform.position, direction * pushDistance, attackPushForce);
+                    melee.transform.position = Vector3.Lerp(melee.transform.position, AttackDirection * pushDistance, attackPushForce);
 
                     enemies.Add(melee.transform.gameObject);
                 }
@@ -67,7 +67,7 @@ public class PlayerAttack : MonoBehaviour
         isAttacking = false;
     }       
     IEnumerator AttackPush(RaycastHit2D melee, Vector3 direction){
-        melee.rigidbody.velocity = Vector2.zero;
+        // melee.rigidbody.velocity = Vector2.zero;
         
         melee.transform.GetComponent<Chasing>().beingPushed = true;
         Vector3 initPos = melee.transform.position;
@@ -77,7 +77,6 @@ public class PlayerAttack : MonoBehaviour
             diff = abs(melee.transform.position - (initPos + direction * pushDistance)).magnitude;
             yield return new WaitForSeconds(Time.deltaTime);
         }
-        Debug.Log("arrived");
         melee.transform.GetComponent<Chasing>().beingPushed = false;
         melee.transform.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }

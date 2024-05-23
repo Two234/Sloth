@@ -217,9 +217,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   player: {fileID: 0}
-  CheckIfRanged: 1
-  CheckIfMelee: 0
+  CheckIfRanged: 0
+  CheckIfMelee: 1
   isRanged: 0
+  beingPushed: 0
   acceleration: 0.005
   speedingLevels: 10
   speedingMaxLevel: 5
