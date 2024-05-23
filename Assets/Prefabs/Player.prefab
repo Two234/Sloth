@@ -224,6 +224,7 @@ MonoBehaviour:
   slashSpeed: 20
   attackPushForce: 0.05
   pushDistance: 5
+  pushSpeed: 0.1
   HitBox: {fileID: 9136596706693056032}
   meleeAttackRange: 1
   animator: {fileID: 0}

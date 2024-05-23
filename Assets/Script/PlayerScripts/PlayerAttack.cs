@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     public float slashSpeed = 20;
     public float attackPushForce = 0.1f;
     public float pushDistance = 2f;
+    public float pushSpeed = 0.1f;
     public GameObject HitBox;
     public float meleeAttackRange = 2f;
     public Animator animator;
@@ -70,14 +71,15 @@ public class PlayerAttack : MonoBehaviour
         
         melee.transform.GetComponent<Chasing>().beingPushed = true;
         Vector3 initPos = melee.transform.position;
-
-        float diff = abs(melee.transform.position - (initPos + direction * pushDistance)).magnitude;
-        while (diff >= 1e-2){
-            melee.transform.position = Vector2.Lerp(melee.transform.position, initPos + direction * pushDistance, attackPushForce); 
-            Debug.Log("hello world");
+        float diff = abs(melee.transform.position - (initPos + direction * pushDistance)).magnitude; // distance = position - destination
+        while (diff >= 1e-1){
+            melee.transform.position = Vector2.MoveTowards(melee.transform.position, Vector2.Lerp(melee.transform.position, initPos + direction * pushDistance, attackPushForce), pushSpeed); 
+            diff = abs(melee.transform.position - (initPos + direction * pushDistance)).magnitude;
             yield return new WaitForSeconds(Time.deltaTime);
         }
+        Debug.Log("arrived");
         melee.transform.GetComponent<Chasing>().beingPushed = false;
+        melee.transform.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
     Vector2 abs(Vector2 vector){
         return new Vector2(Mathf.Abs(vector.x), Mathf.Abs(vector.y));
