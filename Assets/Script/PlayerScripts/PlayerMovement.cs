@@ -74,11 +74,14 @@ public class PlayerMovement : MonoBehaviour
         camera.transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
     }
 
-   
+    
     void Animate(Vector3 direction)
     {
-        animator.SetFloat("AnimMoveX", direction.x);
-        animator.SetFloat("AnimMoveY", direction.y);
+        bool isAttacking = GetComponent<PlayerAttack>().isAttacking;
+        if (isAttacking == false){
+            animator.SetFloat("AnimMoveX", direction.x);
+            animator.SetFloat("AnimMoveY", direction.y);
+        }
         animator.SetFloat("WalkX", direction.x);
         animator.SetFloat("WalkY", direction.y);
         animator.SetFloat("MoveMagnitude", rb.velocity.magnitude);
